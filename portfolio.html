@@ -12,42 +12,129 @@
 		<h1 class="logo">
 			<a href="index.html">Benjamin Henshall</a>
 		</h1>
-	<h3 class="tagline">Software Developer</h3>
+		<h3 class="tagline">Software Developer</h3>
 		<nav class="nav primary-nav">
 			<ul>
 				<li><a href="index.html">Home</a></li><!--
 				--><li><a href="about.html">About Me</a></li><!--
-				--><li class="selected-page"><a href="portfolio.html">Portfolio</a></li><!--
-				--><li><a href="cv.html">CV</a></li><!--
-				--><li><a href="blog.html">Blog</a></li><!--
-				--><li><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
+			--><li class="selected-page"><a href="portfolio.html">Portfolio</a></li><!--
+		--><li><a href="cv.html">CV</a></li><!--
+	--><li><a href="blog.html">Blog</a></li><!--
+--><li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
 
-	</header>
+</header>
 
-	<section class="hero container">
-		<!--<h2>Dedicated to creating exciting new products</h2>-->
-		<p>Benjamin Henshall is a recent Software Engineering graduate from the University of Liverpool. With experience in a wealth of <a href="skills.html">technologies</a> and a proven track record in <a href="education.html">education</a>, he is currently seeking a graduate role in a development studio.</p>
+<section class="row-alt">
+	<div class="lead container">
+		<h1 text-align="center">Portfolio</h1>
+	</div>
+</section>
+
+<section class="row">
+	<div class="grid">
+
+		<!--jMusic project-->
+		<section class="project" id="jMusic-program">
+
+			<div class="col-2-3">
+
+				<h2>Algorithmic jMusic Composer</h2>
+				<h5>Creating music in Java</h5>
+
+				<p>For my final year university project I designed and built jMusic Java program capable of dynamically generating music using pre-composed pieces of music. The pre-composed pieces are translated into a stochastic matrix, which is used in the end goal of generating a new, original piece of music.</p></br>
+
+				<p>This tested my independent research skills, ability to adapt different design concepts as well as technical proficiency in several key areas such as production of accurate design documentation, planning requirements and evaluation methods.</p></br>
+
+				<p>The work produced for this project included a specification/requirements document, a design document, three presentations delivered to senior staff within the department, a 52-page report and a fully functional Java program built to spec.</p></br>
+
+				<p>I used the following technologies: Java, Java SWING, jMusic, Microsoft Word</p></br>
+
+				<p>You can find all the source code and documentation on my <a href="https://github.com/Ben-Henshall/jMusic-composer">GitHub</a>.</p>
+
+			</div><!--
+
+			--><aside class="col-1-3">
+			<div class="project-info">
+
+				<img class="programscreenshot" src="images/jmusicProject.png" alt="jMusic program screenshot">
+
+				<a href="https://github.com/Ben-Henshall/jMusic-composer">
+					<img class="iconimg" src="images/GitHub icon.png"></img>
+				</a>
+
+			</div>
+		</aside>
+
 	</section>
 
+	<section class="project" id="airhockey-program">
 
-<footer class="primary-footer container group">
+		<div class="col-2-3">
 
-	<nav class="nav footer-nav">
-		<ul>
-			<li><a href="index.html">Home</a></li><!--
-			--><li><a href="about.html">About Me</a></li><!--
-			--><li><a href="education.html">Education</a></li><!--
-			--><li><a href="skills.html">Skills</a></li><!--
-			--><li><a href="portfolio.html">Portfolio</a></li><!--
-			--><li><a href="cv.html">CV</a></li><!--
-			--><li><a href="blog.html">Blog</a></li><!--
-			--><li><a href="contact.html">Contact</a></li>
-		</ul>
-	</nav>
+			<h2>Aliens in Panic</h2>
+			<h5>A space themed air hockey game in JMonkeyEngine</h5>
 
-</footer>
+			<p>As part of a games development module, I produced a space themed air hockey game built in JMonkeyEngine. This included learning various concepts of games programming, such as graphics rendering, game loops and hitboxes, as well as mathematical calculations for collision response.</p></br>
+
+			<p>I built the 3D models (Table, UFO-shaped hockey pucks) using Blender. I also (with the help of a couple of friends!) made a full 3 minutes long theme song for the menu section of the game while we were playing around with music creation software.</p></br>
+
+			<p>The work produced for this project included a specification/requirements document, a design document, three presentations delivered to senior staff within the department, a 52-page report and a fully functional Java program built to spec.</p></br>
+
+			<p>I used the following technologies: Java, JMonkeyEngine, Blender</p></br>
+
+			<p>You can find all the source code on my <a href="https://github.com/Ben-Henshall/Aliens-in-Panic">GitHub</a>.</p>
+
+		</div><!--
+
+		--><aside class="col-1-3">
+		<div class="project-info">
+
+			<img class="programscreenshot" src="images/AliensInPanic.png" alt="Aliens in panic game screenshot">
+
+			<a href="https://github.com/Ben-Henshall/Aliens-in-Panic">
+				<img class="iconimg" src="images/GitHub icon.png"></img>
+			</a>
+
+		</div>
+	</aside>
+
+</section>
+
+<section class="project" id="paidia-program">
+
+	<div class="col-2-3">
+
+		<h2>PAIDIA Attraction Filtering System</h2>
+		<h5>A Java program for finding local attractions in Liverpool</h5>
+
+		<p>Collaborated with 4 other University of Liverpool students to design and implement a desktop Java application that could be used to sort and filter a dynamic list of attractions in Liverpool and the surrounding areas. This involved a client-server configuration which the server was efficient enough to run on a Raspberry Pi.</p></br>
+
+		<p>The project ran ahead of schedule allowing us to add extra features including Google Maps directions and E-mail integration.</p></br>
+
+		<p>Throughout the design and development process, I contributed both ideas and time to the project, demonstrating teamwork and reliability time and time again. My responsibilities included the design and implementation of the GUI, integrating the results from the server into the client and extensive testing of the system as a whole.</p></br>
+
+		<p>I used the following technologies: Java, Java SWING, JDBC, MySQL, Ubuntu, Eclipse, Google Maps</p></br>
+
+		<p>You can find all the source code <a href="downloads/PaidiaClientAndServer.zip" download="PaidiaClientAndServer.zip">here</a>.</p>
+
+	</div><!--
+
+	--><aside class="col-1-3">
+	<div class="project-info">
+
+		<img class="programscreenshot" src="images/paidia.png" alt="Paidia client program screenshot">
+
+	</div>
+</aside>
+
+</section>
+
+</div>
+</section>
+
+
 
 </body>
 </html>
