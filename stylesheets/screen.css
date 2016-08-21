@@ -168,7 +168,7 @@ p a {
 .container,
 .grid {
   margin: 0 auto;
-  width: 70%;
+  width: 80%;
   min-width: 960px;
 }
 
@@ -186,7 +186,8 @@ p a {
 
 /* line 99, ../sass/screen.scss */
 .primary-header a:hover,
-.primary-footer a:hover {
+.primary-footer a:hover,
+.selected-page a {
   color: #648880;
 }
 
@@ -195,19 +196,19 @@ p a {
   Clearfix
   ========================================
 */
-/* line 109, ../sass/screen.scss */
+/* line 110, ../sass/screen.scss */
 .group:before,
 .group:after {
   content: "";
   display: table;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 .group:after {
   clear: both;
 }
 
-/* line 117, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 .group {
   clear: both;
   *zoom: 1;
@@ -218,7 +219,7 @@ p a {
   Primary header
   ========================================
 */
-/* line 128, ../sass/screen.scss */
+/* line 129, ../sass/screen.scss */
 .logo {
   border-top: 4px solid #648880;
   float: left;
@@ -226,17 +227,17 @@ p a {
   font-weight: 100;
   letter-spacing: .5px;
   line-height: 44px;
-  padding: 40px 0 22px 0;
+  padding: 40px 0 100px 0;
   text-transform: uppercase;
 }
 
-/* line 138, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 .tagline {
   margin: 66px 0 22px 0;
   text-align: right;
 }
 
-/* line 142, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 .primary-nav {
   font-size: 14px;
   font-weight: 400;
@@ -249,7 +250,7 @@ p a {
   Primary Footer
   ========================================
 */
-/* line 154, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .primary-footer {
   color: #648880;
   font-size: 14px;
@@ -258,13 +259,13 @@ p a {
   display: block;
 }
 
-/* line 161, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 .primary-footer small {
   float: left;
   font-weight: 400;
 }
 
-/* line 166, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 .footer-nav {
   font-size: 10px;
   font-weight: 400;
@@ -277,32 +278,32 @@ p a {
   Home
   ========================================
 */
-/* line 179, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 .hero {
   color: #fff;
   line-height: 44px;
-  padding: 60px 80px 66px 80px;
+  padding: 40px 80px 40px 80px;
   max-width: 1200px;
   text-align: center;
 }
 
-/* line 186, ../sass/screen.scss */
+/* line 187, ../sass/screen.scss */
 .hero h2 {
   font-size: 36px;
 }
 
-/* line 189, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .hero p {
   font-size: 24px;
   font-weight: 100;
 }
 
-/* line 193, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .hero a {
   border: none;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .teaser img {
   border-radius: 5px;
   display: block;
@@ -312,34 +313,86 @@ p a {
 
 /*
   ========================================
+  About
+  ========================================
+*/
+/* line 211, ../sass/screen.scss */
+.portrait {
+  border-radius: 15px 50px;
+  padding-bottom: 12px;
+}
+
+/*
+  ========================================
   Navigation
   ========================================
 */
-/* line 210, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 .nav {
   text-align: right;
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 footer .nav {
   text-align: center;
 }
 
-/* line 217, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 .nav li {
   display: inline-block;
   margin: 0 10px;
   vertical-align: top;
 }
 
-/* line 222, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 footer .nav li {
   display: inline-block;
   margin: 0 1.5%;
   vertical-align: top;
 }
 
-/* line 228, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 .nav li:last-child {
   margin-right: 0;
+}
+
+/*
+  ========================================
+  Rows
+  ========================================
+*/
+/* line 249, ../sass/screen.scss */
+.row-alt,
+.row {
+  min-width: 960px;
+}
+
+/* line 253, ../sass/screen.scss */
+.row {
+  background: #fff;
+  padding: 66px 0 44px 0;
+  text-align: center;
+}
+
+/* line 258, ../sass/screen.scss */
+.row-alt {
+  background: #cbe2c1;
+  background: linear-gradient(to right, #a1d3b0, #f6f1d3);
+  padding: 44px 0 44px 0;
+}
+
+ /*
+ ========================================
+ Leads
+ ========================================
+*/
+/* line 270, ../sass/screen.scss */
+.lead {
+  text-align: center;
+}
+
+/* line 273, ../sass/screen.scss */
+.lead p {
+  font-size: 21px;
+  line-height: 33px;
 }
