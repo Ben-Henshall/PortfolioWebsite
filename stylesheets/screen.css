@@ -168,7 +168,7 @@ p a {
 .container,
 .grid {
   margin: 0 auto;
-  width: 80%;
+  width: 70%;
   min-width: 960px;
 }
 
@@ -240,8 +240,74 @@ p a {
 .primary-nav {
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: .5px;
+  letter-spacing: .2px;
   text-transform: uppercase;
+}
+
+/*
+  ========================================
+  Primary Footer
+  ========================================
+*/
+/* line 154, ../sass/screen.scss */
+.primary-footer {
+  color: #648880;
+  font-size: 14px;
+  padding-bottom: 44px;
+  padding-top: 44px;
+  display: block;
+}
+
+/* line 161, ../sass/screen.scss */
+.primary-footer small {
+  float: left;
+  font-weight: 400;
+}
+
+/* line 166, ../sass/screen.scss */
+.footer-nav {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/*
+  ========================================
+  Home
+  ========================================
+*/
+/* line 179, ../sass/screen.scss */
+.hero {
+  color: #fff;
+  line-height: 44px;
+  padding: 60px 80px 66px 80px;
+  max-width: 1200px;
+  text-align: center;
+}
+
+/* line 186, ../sass/screen.scss */
+.hero h2 {
+  font-size: 36px;
+}
+
+/* line 189, ../sass/screen.scss */
+.hero p {
+  font-size: 24px;
+  font-weight: 100;
+}
+
+/* line 193, ../sass/screen.scss */
+.hero a {
+  border: none;
+}
+
+/* line 197, ../sass/screen.scss */
+.teaser img {
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 22px;
+  max-width: 100%;
 }
 
 /*
@@ -249,19 +315,31 @@ p a {
   Navigation
   ========================================
 */
-/* line 155, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 .nav {
   text-align: right;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
+footer .nav {
+  text-align: center;
+}
+
+/* line 217, ../sass/screen.scss */
 .nav li {
   display: inline-block;
   margin: 0 10px;
   vertical-align: top;
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
+footer .nav li {
+  display: inline-block;
+  margin: 0 1.5%;
+  vertical-align: top;
+}
+
+/* line 228, ../sass/screen.scss */
 .nav li:last-child {
   margin-right: 0;
 }

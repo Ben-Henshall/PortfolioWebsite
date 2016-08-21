@@ -84,7 +84,7 @@ p a {
 .container,
 .grid {
   margin: 0 auto;
-  width: 80%;
+  width: 70%;
   min-width: 960px;
 }
 .container {
@@ -142,8 +142,63 @@ p a {
 .primary-nav {
   font-size: 14px;
   font-weight: 400;
-  letter-spacing: .5px;
+  letter-spacing: .2px;
   text-transform: uppercase;
+}
+
+/*
+  ========================================
+  Primary Footer
+  ========================================
+*/
+.primary-footer {
+  color: #648880;
+  font-size: 14px;
+  padding-bottom: 44px;
+  padding-top: 44px;
+  display: block;
+}
+.primary-footer small {
+  float: left;
+  font-weight: 400;
+}
+
+.footer-nav {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/*
+  ========================================
+  Home
+  ========================================
+*/
+
+.hero {
+  color: #fff;
+  line-height: 44px;
+  padding: 60px 80px 66px 80px;
+  max-width: 1200px;
+  text-align: center;
+}
+.hero h2 {
+  font-size: 36px;
+}
+.hero p {
+  font-size: 24px;
+  font-weight: 100;
+}
+.hero a {
+  border: none;
+}
+
+.teaser img {
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 22px;
+  max-width: 100%
 }
 
 /*
@@ -155,10 +210,18 @@ p a {
 .nav {
   text-align: right;
 }
+footer .nav {
+  text-align: center;
+}
 
 .nav li {
   display: inline-block;
   margin: 0 10px;
+  vertical-align: top;
+}
+footer .nav li{
+  display: inline-block;
+  margin: 0 1.5%;
   vertical-align: top;
 }
 
