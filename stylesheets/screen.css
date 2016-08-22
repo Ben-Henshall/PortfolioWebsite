@@ -234,18 +234,25 @@ p a {
   width: 64%;
 }
 
-/* line 139, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
+.col-1-2 {
+  width: 49%;
+}
+
+/* line 142, ../sass/screen.scss */
 .col-1-3,
-.col-2-3 {
+.col-2-3,
+.col-1-2 {
   display: inline-block;
   vertical-align: top;
   margin-left: 2px;
   margin-right: 2px;
 }
 
-/* line 147, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 .col-1-3,
-.col-2-3 {
+.col-2-3,
+.col-1-2 {
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -255,7 +262,7 @@ p a {
   Primary header
   ========================================
 */
-/* line 159, ../sass/screen.scss */
+/* line 164, ../sass/screen.scss */
 .logo {
   border-top: 4px solid #648880;
   float: left;
@@ -263,17 +270,17 @@ p a {
   font-weight: 100;
   letter-spacing: .5px;
   line-height: 44px;
-  padding: 40px 0 100px 0;
+  padding: 40px 0 80px 0;
   text-transform: uppercase;
 }
 
-/* line 169, ../sass/screen.scss */
+/* line 174, ../sass/screen.scss */
 .tagline {
-  margin: 66px 0 22px 0;
+  margin: 20px 0 11px 0;
   text-align: right;
 }
 
-/* line 173, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 .primary-nav {
   font-size: 14px;
   font-weight: 400;
@@ -286,7 +293,7 @@ p a {
   Primary Footer
   ========================================
 */
-/* line 185, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .primary-footer {
   color: #648880;
   font-size: 14px;
@@ -295,13 +302,13 @@ p a {
   display: block;
 }
 
-/* line 192, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 .primary-footer small {
   float: left;
   font-weight: 400;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 .footer-nav {
   font-size: 10px;
   font-weight: 400;
@@ -314,7 +321,7 @@ p a {
   Home
   ========================================
 */
-/* line 210, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 .hero {
   color: #fff;
   line-height: 44px;
@@ -323,23 +330,23 @@ p a {
   text-align: center;
 }
 
-/* line 217, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 .hero h2 {
   font-size: 36px;
 }
 
-/* line 220, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 .hero p {
   font-size: 24px;
   font-weight: 100;
 }
 
-/* line 224, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 .hero a {
   border: none;
 }
 
-/* line 228, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 .teaser img {
   border-radius: 5px;
   display: block;
@@ -352,31 +359,31 @@ p a {
   Navigation
   ========================================
 */
-/* line 241, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 .nav {
   text-align: right;
 }
 
-/* line 244, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 footer .nav {
   text-align: center;
 }
 
-/* line 248, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 .nav li {
   display: inline-block;
   margin: 0 10px;
   vertical-align: top;
 }
 
-/* line 253, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 footer .nav li {
   display: inline-block;
   margin: 0 1.5%;
   vertical-align: top;
 }
 
-/* line 259, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 .nav li:last-child {
   margin-right: 0;
 }
@@ -386,20 +393,20 @@ footer .nav li {
   Rows
   ========================================
 */
-/* line 268, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 .row-alt,
 .row {
   min-width: 960px;
 }
 
-/* line 272, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 .row {
   background: #fff;
   padding: 66px 0 44px 0;
   text-align: center;
 }
 
-/* line 277, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .row-alt {
   background: #cbe2c1;
   background: linear-gradient(to right, #a1d3b0, #f6f1d3);
@@ -411,12 +418,12 @@ footer .nav li {
  Leads
  ========================================
 */
-/* line 289, ../sass/screen.scss */
+/* line 294, ../sass/screen.scss */
 .lead {
   text-align: center;
 }
 
-/* line 292, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 .lead p {
   font-size: 21px;
   line-height: 33px;
@@ -427,14 +434,14 @@ footer .nav li {
   Projects
   ========================================
 */
-/* line 303, ../sass/screen.scss */
+/* line 308, ../sass/screen.scss */
 .project-info {
   margin-top: 60px;
   padding-bottom: 22px;
   text-align: center;
 }
 
-/* line 308, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 .project {
   padding-top: 15px;
   border-style: solid;
@@ -443,12 +450,12 @@ footer .nav li {
   margin-bottom: 44px;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 320, ../sass/screen.scss */
 .project:first-child {
   border: none;
 }
 
-/* line 318, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 .programscreenshot {
   width: 100%;
   vertical-align: top;
@@ -457,7 +464,7 @@ footer .nav li {
   border-width: thin;
 }
 
-/* line 325, ../sass/screen.scss */
+/* line 330, ../sass/screen.scss */
 .iconimg {
   width: 40px;
   height: 40px;
@@ -468,7 +475,7 @@ footer .nav li {
   About
   ========================================
 */
-/* line 336, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 .portrait {
   border-radius: 15px 50px;
   padding-bottom: 12px;
@@ -480,7 +487,7 @@ footer .nav li {
   ========================================
 */
 @media screen and (max-width: 980px) {
-  /* line 348, ../sass/screen.scss */
+  /* line 353, ../sass/screen.scss */
   #cv {
     visibility: hidden;
     display: none;
