@@ -5,6 +5,7 @@
 
 @import "compass/reset";
 
+$max-device-width: 980px;
 
 /*
   ========================================
@@ -15,7 +16,9 @@ body {
   background: #293f50;  color: #88;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+html {
+    height: 100%;
+}
 h1, h2, h3, h4 {
   color: #648880;
 }
@@ -333,4 +336,17 @@ footer .nav li{
 .portrait {
   border-radius: 15px 50px;
   padding-bottom: 12px;
+}
+
+/*
+  ========================================
+  Mobile
+  ========================================
+*/
+
+@media screen and (max-width: $max-device-width) {
+  #cv {
+    visibility: hidden;
+    display: none;
+  }
 }
