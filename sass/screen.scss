@@ -355,3 +355,47 @@ footer .nav li{
     display: none;
   }
 }
+
+/*
+  ========================================
+  Blogs
+  ========================================
+*/
+
+.blog-entry {
+  text-align: left;
+  max-width: 1500px;
+}
+.blog-entry #sightings-image {
+  display: block;
+  width: 260px;
+}
+.blog-entry #pokevision-map {
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.blog-entry #scanned-locs {
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.blog-entry figcaption h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+.blog-entry ol {
+  list-style-type: decimal;
+  padding-left: 40px;
+}
+
+.blog-tagline {
+  color: #a9b2b9;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}

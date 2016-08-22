@@ -493,3 +493,56 @@ footer .nav li {
     display: none;
   }
 }
+/*
+  ========================================
+  Blogs
+  ========================================
+*/
+/* line 365, ../sass/screen.scss */
+.blog-entry {
+  text-align: left;
+  max-width: 1500px;
+}
+
+/* line 369, ../sass/screen.scss */
+.blog-entry #sightings-image {
+  display: block;
+  width: 260px;
+}
+
+/* line 373, ../sass/screen.scss */
+.blog-entry #pokevision-map {
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* line 378, ../sass/screen.scss */
+.blog-entry #scanned-locs {
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* line 383, ../sass/screen.scss */
+.blog-entry figcaption h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  text-transform: lowercase;
+}
+
+/* line 391, ../sass/screen.scss */
+.blog-entry ol {
+  list-style-type: decimal;
+  padding-left: 40px;
+}
+
+/* line 396, ../sass/screen.scss */
+.blog-tagline {
+  color: #a9b2b9;
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
