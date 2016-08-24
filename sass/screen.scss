@@ -399,3 +399,97 @@ footer .nav li{
   font-weight: 400;
   text-transform: uppercase;
 }
+
+.blog-listing {
+  padding-top: 15px;
+  border-style: solid;
+  border-top-width: thin;
+  border-color: #AAA8B1;
+  margin-bottom: 44px;
+}
+.blog-listing:first-child {
+  border:none;
+}
+
+/*
+  ========================================
+  Tabs
+  ========================================
+*/
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 40%;
+    margin: 0 auto;
+}
+ul.tab li {
+  float: left;
+  width: 50%;
+}
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 24px;
+    width: 100%;
+}
+ul.tab li a:hover {
+  background-color: #ddd;
+}
+ul.tab li a:focus, .active {
+  background-color: #ccc;
+}
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: 1px solid #ccc;
+    margin-top: 12px;
+}
+#Confirmed {
+  display: block;
+}
+
+
+/*
+  ========================================
+  Nests
+  ========================================
+*/
+
+.nest-listing {
+  padding-top: 15px;
+  border-style: solid;
+  border-top-width: thin;
+  border-color: #AAA8B1;
+  margin-bottom: 44px;
+}
+.nest-listing:first-child {
+  border:none;
+}
+.nest-listing h2 {
+  padding-bottom: 30px;
+}
+
+.pokemonfig {
+  width: 32%;
+  display: inline-block;
+}
+.nestscreenshot {
+  padding-top: 15px;
+  width: 40%;
+}
+.pokemon-nest-arrow {
+  width: 15%;
+  display: inline-block;
+}
+
+#nest-intro {
+  padding-bottom: 15px;
+}
