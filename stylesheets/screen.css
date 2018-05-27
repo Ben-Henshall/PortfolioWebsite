@@ -2,116 +2,43 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 5, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-/* line 22, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-html {
-  line-height: 1;
-}
-
-/* line 24, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
-}
-
-/* line 26, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* line 28, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../Ruby22/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-
 /*
   ========================================
   Custom styles
   ========================================
 */
-/* line 15, ../sass/screen.scss */
 body {
   background: #293f50;
-  color: #88;
+  color: #8888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 19, ../sass/screen.scss */
 html {
   height: 100%;
 }
 
-/* line 22, ../sass/screen.scss */
 h1, h2, h3, h4 {
   color: #648880;
 }
 
-/* line 26, ../sass/screen.scss */
 h1 {
   font-size: 36px;
   line-height: 44px;
 }
 
-/* line 30, ../sass/screen.scss */
 h2 {
   font-size: 24px;
   line-height: 44px;
 }
 
-/* line 34, ../sass/screen.scss */
 h3 {
   font-size: 21px;
 }
 
-/* line 37, ../sass/screen.scss */
 h4 {
   font-size: 18px;
 }
 
-/* line 40, ../sass/screen.scss */
 h5 {
   color: #a9b2b9;
   font-size: 14px;
@@ -119,12 +46,10 @@ h5 {
   text-transform: uppercase;
 }
 
-/* line 46, ../sass/screen.scss */
 strong {
   font-weight: 400;
 }
 
-/* line 49, ../sass/screen.scss */
 cite, em {
   font-style: italic;
 }
@@ -134,23 +59,19 @@ cite, em {
   Links
   ========================================
 */
-/* line 59, ../sass/screen.scss */
 a {
   color: #648880;
   text-decoration: none;
 }
 
-/* line 63, ../sass/screen.scss */
 a:hover {
   color: #a9b2b9;
 }
 
-/* line 66, ../sass/screen.scss */
 p a {
   border-bottom: 1px solid #dfe2e5;
 }
 
-/* line 69, ../sass/screen.scss */
 .teaser a:hover h3 {
   color: #a9b2b9;
 }
@@ -160,7 +81,6 @@ p a {
   Grid
   ========================================
 */
-/* line 79, ../sass/screen.scss */
 *,
 *:before,
 *:after {
@@ -169,7 +89,6 @@ p a {
   box-sizing: border-box;
 }
 
-/* line 87, ../sass/screen.scss */
 .container,
 .grid {
   margin: 0 auto;
@@ -177,19 +96,16 @@ p a {
   min-width: 960px;
 }
 
-/* line 93, ../sass/screen.scss */
 .container {
   padding-left: 30px;
   padding-right: 30px;
 }
 
-/* line 98, ../sass/screen.scss */
 .primary-header a,
 .primary-footer a {
   color: #fff;
 }
 
-/* line 102, ../sass/screen.scss */
 .primary-header a:hover,
 .primary-footer a:hover,
 .selected-page a {
@@ -201,19 +117,16 @@ p a {
   Clearfix
   ========================================
 */
-/* line 113, ../sass/screen.scss */
 .group:before,
 .group:after {
   content: "";
   display: table;
 }
 
-/* line 118, ../sass/screen.scss */
 .group:after {
   clear: both;
 }
 
-/* line 121, ../sass/screen.scss */
 .group {
   clear: both;
   *zoom: 1;
@@ -224,22 +137,18 @@ p a {
     Content cols
   ========================================
 */
-/* line 132, ../sass/screen.scss */
 .col-1-3 {
   width: 32%;
 }
 
-/* line 135, ../sass/screen.scss */
 .col-2-3 {
   width: 64%;
 }
 
-/* line 138, ../sass/screen.scss */
 .col-1-2 {
   width: 49%;
 }
 
-/* line 142, ../sass/screen.scss */
 .col-1-3,
 .col-2-3,
 .col-1-2 {
@@ -249,7 +158,6 @@ p a {
   margin-right: 2px;
 }
 
-/* line 151, ../sass/screen.scss */
 .col-1-3,
 .col-2-3,
 .col-1-2 {
@@ -262,7 +170,6 @@ p a {
   Primary header
   ========================================
 */
-/* line 164, ../sass/screen.scss */
 .logo {
   border-top: 4px solid #648880;
   float: left;
@@ -274,13 +181,11 @@ p a {
   text-transform: uppercase;
 }
 
-/* line 174, ../sass/screen.scss */
 .tagline {
   margin: 20px 0 11px 0;
   text-align: right;
 }
 
-/* line 178, ../sass/screen.scss */
 .primary-nav {
   font-size: 14px;
   font-weight: 400;
@@ -293,7 +198,6 @@ p a {
   Primary Footer
   ========================================
 */
-/* line 190, ../sass/screen.scss */
 .primary-footer {
   color: #648880;
   font-size: 14px;
@@ -302,13 +206,11 @@ p a {
   display: block;
 }
 
-/* line 197, ../sass/screen.scss */
 .primary-footer small {
   float: left;
   font-weight: 400;
 }
 
-/* line 202, ../sass/screen.scss */
 .footer-nav {
   font-size: 10px;
   font-weight: 400;
@@ -321,7 +223,6 @@ p a {
   Home
   ========================================
 */
-/* line 215, ../sass/screen.scss */
 .hero {
   color: #fff;
   line-height: 44px;
@@ -330,23 +231,19 @@ p a {
   text-align: center;
 }
 
-/* line 222, ../sass/screen.scss */
 .hero h2 {
   font-size: 36px;
 }
 
-/* line 225, ../sass/screen.scss */
 .hero p {
   font-size: 24px;
   font-weight: 100;
 }
 
-/* line 229, ../sass/screen.scss */
 .hero a {
   border: none;
 }
 
-/* line 233, ../sass/screen.scss */
 .teaser img {
   border-radius: 5px;
   display: block;
@@ -359,31 +256,26 @@ p a {
   Navigation
   ========================================
 */
-/* line 246, ../sass/screen.scss */
 .nav {
   text-align: right;
 }
 
-/* line 249, ../sass/screen.scss */
 footer .nav {
   text-align: center;
 }
 
-/* line 253, ../sass/screen.scss */
 .nav li {
   display: inline-block;
   margin: 0 10px;
   vertical-align: top;
 }
 
-/* line 258, ../sass/screen.scss */
 footer .nav li {
   display: inline-block;
   margin: 0 1.5%;
   vertical-align: top;
 }
 
-/* line 264, ../sass/screen.scss */
 .nav li:last-child {
   margin-right: 0;
 }
@@ -393,37 +285,32 @@ footer .nav li {
   Rows
   ========================================
 */
-/* line 273, ../sass/screen.scss */
 .row-alt,
 .row {
   min-width: 960px;
 }
 
-/* line 277, ../sass/screen.scss */
 .row {
   background: #fff;
   padding: 66px 0 44px 0;
   text-align: center;
 }
 
-/* line 282, ../sass/screen.scss */
 .row-alt {
   background: #cbe2c1;
   background: linear-gradient(to right, #a1d3b0, #f6f1d3);
   padding: 44px 0 44px 0;
 }
 
- /*
+/*
  ========================================
  Leads
  ========================================
 */
-/* line 294, ../sass/screen.scss */
 .lead {
   text-align: center;
 }
 
-/* line 297, ../sass/screen.scss */
 .lead p {
   font-size: 21px;
   line-height: 33px;
@@ -434,14 +321,12 @@ footer .nav li {
   Projects
   ========================================
 */
-/* line 308, ../sass/screen.scss */
 .project-info {
   margin-top: 60px;
   padding-bottom: 22px;
   text-align: center;
 }
 
-/* line 313, ../sass/screen.scss */
 .project {
   padding-top: 15px;
   border-style: solid;
@@ -450,12 +335,10 @@ footer .nav li {
   margin-bottom: 44px;
 }
 
-/* line 320, ../sass/screen.scss */
 .project:first-child {
   border: none;
 }
 
-/* line 323, ../sass/screen.scss */
 .programscreenshot {
   width: 100%;
   vertical-align: top;
@@ -464,7 +347,6 @@ footer .nav li {
   border-width: thin;
 }
 
-/* line 330, ../sass/screen.scss */
 .iconimg {
   width: 40px;
   height: 40px;
@@ -475,7 +357,6 @@ footer .nav li {
   About
   ========================================
 */
-/* line 341, ../sass/screen.scss */
 .portrait {
   border-radius: 15px 50px;
   padding-bottom: 12px;
@@ -487,44 +368,39 @@ footer .nav li {
   ========================================
 */
 @media screen and (max-width: 980px) {
-  /* line 353, ../sass/screen.scss */
   #cv {
     visibility: hidden;
     display: none;
   }
 }
+
 /*
   ========================================
   Blogs
   ========================================
 */
-/* line 365, ../sass/screen.scss */
 .blog-entry {
   text-align: left;
   max-width: 1500px;
 }
 
-/* line 369, ../sass/screen.scss */
 .blog-entry #sightings-image {
   display: block;
   width: 260px;
 }
 
-/* line 373, ../sass/screen.scss */
 .blog-entry #pokevision-map {
   display: block;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* line 378, ../sass/screen.scss */
 .blog-entry #scanned-locs {
   display: block;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* line 383, ../sass/screen.scss */
 .blog-entry figcaption h5 {
   color: #a9b2b9;
   font-size: 14px;
@@ -533,13 +409,11 @@ footer .nav li {
   text-transform: lowercase;
 }
 
-/* line 391, ../sass/screen.scss */
 .blog-entry ol {
   list-style-type: decimal;
   padding-left: 40px;
 }
 
-/* line 396, ../sass/screen.scss */
 .blog-tagline {
   color: #a9b2b9;
   font-size: 13px;
@@ -547,7 +421,6 @@ footer .nav li {
   text-transform: uppercase;
 }
 
-/* line 403, ../sass/screen.scss */
 .blog-listing {
   padding-top: 15px;
   border-style: solid;
@@ -556,7 +429,6 @@ footer .nav li {
   margin-bottom: 44px;
 }
 
-/* line 410, ../sass/screen.scss */
 .blog-listing:first-child {
   border: none;
 }
@@ -566,7 +438,6 @@ footer .nav li {
   Tabs
   ========================================
 */
-/* line 419, ../sass/screen.scss */
 ul.tab {
   list-style-type: none;
   margin: 0;
@@ -578,13 +449,11 @@ ul.tab {
   margin: 0 auto;
 }
 
-/* line 429, ../sass/screen.scss */
 ul.tab li {
   float: left;
   width: 50%;
 }
 
-/* line 433, ../sass/screen.scss */
 ul.tab li a {
   display: inline-block;
   color: black;
@@ -596,17 +465,14 @@ ul.tab li a {
   width: 100%;
 }
 
-/* line 443, ../sass/screen.scss */
 ul.tab li a:hover {
   background-color: #ddd;
 }
 
-/* line 446, ../sass/screen.scss */
 ul.tab li a:focus, .active {
   background-color: #ccc;
 }
 
-/* line 449, ../sass/screen.scss */
 .tabcontent {
   display: none;
   padding: 6px 12px;
@@ -614,7 +480,6 @@ ul.tab li a:focus, .active {
   margin-top: 12px;
 }
 
-/* line 455, ../sass/screen.scss */
 #Confirmed {
   display: block;
 }
@@ -624,7 +489,6 @@ ul.tab li a:focus, .active {
   Nests
   ========================================
 */
-/* line 466, ../sass/screen.scss */
 .nest-listing {
   padding-top: 15px;
   border-style: solid;
@@ -633,35 +497,39 @@ ul.tab li a:focus, .active {
   margin-bottom: 44px;
 }
 
-/* line 473, ../sass/screen.scss */
 .nest-listing:first-child {
   border: none;
 }
 
-/* line 476, ../sass/screen.scss */
 .nest-listing h2 {
   padding-bottom: 30px;
 }
 
-/* line 480, ../sass/screen.scss */
 .pokemonfig {
   width: 32%;
   display: inline-block;
 }
 
-/* line 484, ../sass/screen.scss */
 .nestscreenshot {
   padding-top: 15px;
   width: 40%;
 }
 
-/* line 488, ../sass/screen.scss */
 .pokemon-nest-arrow {
   width: 15%;
   display: inline-block;
 }
 
-/* line 493, ../sass/screen.scss */
 #nest-intro {
   padding-bottom: 15px;
+}
+
+/*
+  ========================================
+  privacy-policy
+  ========================================
+*/
+.privacy-policy {
+  text-align: left;
+  padding-top: 0px;
 }

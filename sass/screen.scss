@@ -3,8 +3,6 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
-
 $max-device-width: 980px;
 
 /*
@@ -13,7 +11,8 @@ $max-device-width: 980px;
   ========================================
 */
 body {
-  background: #293f50;  color: #88;
+  background: #293f50;
+  color: #8888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 html {
@@ -492,4 +491,15 @@ ul.tab li a:focus, .active {
 
 #nest-intro {
   padding-bottom: 15px;
+}
+
+/*
+  ========================================
+  privacy-policy
+  ========================================
+*/
+
+.privacy-policy {
+  text-align: left;
+  padding-top: 0px;
 }
