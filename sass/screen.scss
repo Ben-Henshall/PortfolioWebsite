@@ -401,13 +401,13 @@ footer .nav li{
 
 .blog-listing {
   padding-top: 15px;
-  border-style: solid;
-  border-top-width: thin;
+  border: 1px;
+  border-style: solid none none none;
   border-color: #AAA8B1;
   margin-bottom: 44px;
 }
 .blog-listing:first-child {
-  border:none;
+  border-top-style: none;
 }
 
 /*
