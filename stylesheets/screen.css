@@ -9,7 +9,7 @@
 */
 body {
   background: #293f50;
-  color: #8888;
+  color: #1F304A;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -329,14 +329,14 @@ footer .nav li {
 
 .project {
   padding-top: 15px;
-  border-style: solid;
-  border-top-width: thin;
+  border: 1px;
+  border-style: solid none none none;
   border-color: #AAA8B1;
   margin-bottom: 44px;
 }
 
 .project:first-child {
-  border: none;
+  border-top-style: none;
 }
 
 .programscreenshot {
