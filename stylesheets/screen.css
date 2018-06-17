@@ -68,6 +68,10 @@ a:hover {
   color: #a9b2b9;
 }
 
+.thick-link {
+  font-weight: bolder;
+}
+
 p a {
   border-bottom: 1px solid #dfe2e5;
 }
