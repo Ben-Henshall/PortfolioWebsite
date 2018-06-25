@@ -356,6 +356,10 @@ footer .nav li {
   height: 40px;
 }
 
+.appicon {
+  border-radius: 57px;
+}
+
 /*
   ========================================
   About
