@@ -62,7 +62,7 @@
 		<a target="_blank" href="https://www.appstore.com/RatesMateCurrencyConverter">
 			<img class="appicon-center" src="../images/RatesMateAppIcon.png" alt="RatesMate app icon" width="200">
 		</a>
-		<h1>RatesMate - A technical overview</h1>
+		<h1>RatesMate - A technical overview // TODO, add links to frameworks</h1>
 
 	<ol>
 		<a href="#section1"><li>What is RatesMate, and why does it exist?</li></a>
@@ -84,11 +84,11 @@
 		</div>
 		<div class="col-2-3">
 			<p>RatesMate is a simple yet powerful currency conversion app. RatesMate includes currency rates for over 150 currencies and includes tipping customs for 65 countries.</p>
-			<p>RatesMate was designed and built as a portfolio app. An app which further me as an iOS developer and allow me to see the full design, implementation and release stages of an iOS project. More specifically, I could use it as an oppurtunity to try using RxSwift in a full app implementation.</p>
+			<p>RatesMate was designed and built as a portfolio app. An app which further me as an iOS developer and allow me to see the full design, implementation and release stages of an iOS project. More specifically, I could use it as an opportunity to try using RxSwift in a full app implementation.</p>
 			<p>The reason I decided to create a currency conversion app boils down to a few things:</p>
 			<ul>
 				<li><p>The app would make use <b>free</b> REST APIs. I wanted the only financial investment to be the Apple developer account fee.</p></li>
-				<li><p>Updating information asynchronously over the networking, then propogating the received data throughout the app is a perfect use case for the Rx paradigm.</p></li>
+				<li><p>Updating information asynchronously over the networking, then propagating the received data throughout the app is a perfect use case for the Rx paradigm.</p></li>
 				<li><p>The tipping unique selling point of the app isn't implemented in too many conversion apps that I have seen.</p></li>
 				<li><p>It would be an app I would make use of whenever I go abroad.</p></li>
 			</ul>
@@ -98,26 +98,47 @@
 	</br>
 
 	<h2><a name="section2">Technologies</a></h2>
-	<p>Paragraph about RxSwift and why it interested me.</p>
-	<p>As mentioned in the previous chapter, one of the main driving forces behind RatesMate was the desire to use RxSwift in a full app environment. </p>
-	<p>Talk about use of Firebase and how just using a basic AWS would have been fine</p>
-	<p>Several paragraphs about other technologies used (And why they were used), if the technology can be fleshed out to a paragraph.</p>
-	<p>Mention fastlane & sketch</p>
-	<p>Mention Git/Gitlab - post commit history histogram</p>
+	<p>As mentioned in the previous chapter, one of the main driving forces behind RatesMate was the desire to use RxSwift in a full app environment. The entirety of the app makes use of the reactive programming paradigm - networking, data flow and even the chaining of animations.</p>
+	<p>Paired with RxSwift, I made use of RxCocoa. RxCocoa contains a bunch of useful Cocoa extensions to provide rx-y functionality - such as being able to use the response from a URLSession through an observable, or publishing text property updates to UILabels through bindings.</p>
+	<p>Both RxTest and RxBlocking are included in the same repo as RxSwift and RxCocoa. These are used extensively in my unit tests, to efficiently and correctly ensure that my code is working, allowing me to confidently refactor in the future.</p>
+	<p>Other Rx related libraries used were:</p>
+	<ul>
+		<li><b>RxAnimated:</b> Allows animated sinks to be added to data bindings - rather than normally binding a subject to say, a UILabels text bindable, you can specify an animation type and duration, so that when the subject emits an event the UILabel updates the text property with the given animation.</li>
+		<li><b>Action:</b> Used to execute work by subscribing to an observable when the action receives an input. Allows the button state to be disabled while the observable is being subscribed to, preventing multiple executions</li>
+		<li><b>RxDataSources:</b> RxCocoa offers some extensions for powering UITableView, but they're not quite as powerful as using RxDataSources. RxDataSources has an highly optimised diff algorithm for inserting, deleting and updating cell content within a UITableView.</li>
+		<li><b>RxGesture:</b> Converts gesture events into an observable stream. I only really use this in the continent selection screen, but wanted to try out the library so added it as a dependency anyway.</li>
+		<li><b>RxStoreKit:</b> Allows access to the StoreKit API in a functional, reactive manner.</li>
+	</ul>
+	<p>To help with debugging in both the development stage and in production, I used the CocoaLumberjack logging framework as I am familiar with it.</p>
+	<p>Evaluating calculations that the user has entered required two dependencies. The calculator had to be able to evaluate a string of operations (e.g. "1 + 2 / 3") and be able to deal with very large denominations of currency, since some conversions would be in large amounts (An example being converting Euros to Vietnamese Dong).
+		For the first requirement, I used "Expression", an iOS library that can evaluate a string and output a double value. For the second requirement, I used Swift-Big-Number.</p>
+	<p>However, due to Expression outputting the value as a double as the largest datatype, I had to use a modified version of Expression that included the BigNumber library, which could then evaluate an expression and return a BigNumber datatype instead.
+		The BigNumber library also required some modification to fix some accuracy issues, so I forked both of these repos and stored them on my own GitHub. I updated the podspecs and created my own private podspecs repo, so that I could use CocoaPods to load private repos.</p>
+
+	<p>I opted for Firebase as my backend technology, using a combination of both the database and cloud functions. I load from 2 APIs, one for country info and one for currency exchange rates. These are loaded into the database by two cloud functions (Cloud functions are JS code executed upon a GET request to an address), which is then pulled down to the app. These functions are executed by Cron jobs hosted by another free service.</p>
+	<p>Using Firebase in this approach may have been overkill, since I'm not making use of many of the features Firebase has to offers, but I struggled to find a free cloud computing service that would let me host my own endpoint, without having to run my own server. I suppose I now get Firebase analytics without any extra hassle.</p>
+	<p>The APIs used were RESTCountries and CurrencyLayer.</p>
+
+	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods (due to statically linked libraries). I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
+	<p>During the design phase, I designed wireframes in Sketch to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
+
+	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build, as well as allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
+	<p>The project was maintained in source control with Git on the GitLab service.</p>
+	<center><img src="../images/GitHistoryScreenshot.png" alt="RatesMate app icon" width=50%></center>
 	</br>
 
 	<h2><a name="section3">Architecture & Design Patterns</a></h2>
 	<p>Paragraph comparing MVVM and MVC for my purpose. Mention how it's suited to use with RxSwift.</p>
 	<p>Show image of header for countryInfoVM to show how information is exposed</p>
 	<p>Explain use of SceneCoordinator and how it improves testability of VMs.</p>
-	<p>Explain use of Depedency Injection (Include testability)</p>
+	<p>Explain use of Dependency Injection (Include testability)</p>
 	<p>Explain why I avoided using storyboards and tried to do constraints programatically</p>
 	</br>
 
 	<h2><a name="section4">Issues Faced</a></h2>
 	<p>Lack of familiarity with RxSwift, went and read the book</p>
 	<p>Explain how the calculators work with expressions, explain changes required to get a large expression correct - including podspecs repo</p>
-	<p>Paragraph about Xcodes lack of useful errors when using RxSwift</p>
+	<p>Paragraph about Xcode's lack of useful errors when using RxSwift</p>
 	<p>GDPR compliance</p>
 	<p>Minor issue, explain use of border animations for currencies when launching app</p>
 	</br>
