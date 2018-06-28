@@ -121,7 +121,7 @@
 	<p>In terms of iOS SDK APIs, I made use of both UIKit (Pretty much guaranteed in any iOS project) and StoreKit.</p>
 	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods (due to statically linked libraries). I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
 	<p>During the design phase, I designed wireframes in Sketch to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
-
+	<p>// TODO, swiftlint</p>
 	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build, as well as allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
 	<p>The project was maintained in source control with Git on the GitLab service.</p>
 	<center>
@@ -139,8 +139,16 @@
 	<p>One of the most popular reasons to avoid MVC to avoiding is ViewController bloat, but this only really becomes an issue if MVC is implemented badly. Functionality should still be separated from view controllers into separate units (Handlers, service classes, extensions etc). MVC starts to go awry when the requirements for functionality to be separated into new units is not clearly defined - this can have disastrous consequences on large code bases, causing tight coupling between view logic and business logic. This issue is much easier to minimise in a single-developer project as the decisions of separation are more consistent, provided the developer is disciplined in following a decoupled structure.</p>
 	<p>MVVM helps with this separation by completely separating the view logic and the business logic. The View module of MVVM (Which includes the ViewController) simply displays data from the ViewModel. An excellent rule I use when developing in an MVVM architecture is to always design the ViewModel as if I was going to build a MacOS app, identical to the iOS app, and use the ViewModel to power the AppKit based ViewController.</p>
 	<p>Since MVVM is popular in apps that use RxSwift (partly due to the data flow from the ViewModel to it's owner ViewController being trivialised), I decided to opt for MVVM as any company I make work for in the future would likely use RxSwift and therefore likely use the MVVM architecture.</p>
-	<p>To exemplify how the ViewModel </p>
-	<h4>Design Patterns</h4>
+	<p>To exemplify how the ViewModel and ViewController exchange data, I have created two code snippets of a simple ViewModel/ViewController pairing from my app. The UI elements have been removed from these classes since that is not the focus of the snippet. I've also updated it to use UILabels/UIButtons rather than a using a UITableView to reduce complexity.</p>
+	<script src="https://gist.github.com/Ben-Henshall/c21df26dfd4c492a520360b2a18541b0.js"></script>
+	<p>A couple of things to point out:</p>
+	<ul>
+		<li>The business logic of what information to display, how it should be formatted and how to update the state is exclusively contained within the ViewModel. This means that testing this logic is faster (i don't have to load any UI elements/storyboards to test the logic) and the testing can also be separated into a framework, which could then be shared across multiple targets (a MacOS app, for example).</li>
+		<li>State updates in the ViewModel are automatically detected and updated in the ViewController - this is the binding aspect of the data flow from the ViewModel to the ViewController.</li>
+		<li>Transitions between ViewControllers is handled entirely within the ViewModel by use of the SceneCoordinator. This makes testing VC transitions and verifying the resulting ViewModel much easier. The SceneCoordinator is covered in more detail in the <a href="#design-patterns">design patterns</a> section.</li>
+		<li><code>closeAction</code> is an example of the Action library. Once the <code>closeButton</code> has been tapped, the <code>closeButton</code> won't be usable until <code>sceneCoordinator.pop().asObservable().map { _ in }</code> emits an event.</li>
+	</ul>
+	<h4><a name="design-patterns">Design Patterns</a></h4>
 	<p>Explain use of SceneCoordinator and how it improves testability of VMs.</p>
 	<p>Explain use of Dependency Injection (Include testability)</p>
 	<p>Explain why I avoided using storyboards and tried to do constraints programatically</p>
