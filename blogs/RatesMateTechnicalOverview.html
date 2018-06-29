@@ -121,7 +121,7 @@
 	<p>In terms of iOS SDK APIs, I made use of both UIKit (Pretty much guaranteed in any iOS project) and StoreKit.</p>
 	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods (due to statically linked libraries). I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
 	<p>During the design phase, I designed wireframes in Sketch to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
-	<p>// TODO, swiftlint</p>
+	<p>To maintain a consistent code style, I added Swiftlint as a run script phase.</p>
 	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build, as well as allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
 	<p>The project was maintained in source control with Git on the GitLab service.</p>
 	<center>
@@ -148,14 +148,35 @@
 		<li>Transitions between ViewControllers is handled entirely within the ViewModel by use of the SceneCoordinator. This makes testing VC transitions and verifying the resulting ViewModel much easier. The SceneCoordinator is covered in more detail in the <a href="#design-patterns">design patterns</a> section.</li>
 		<li><code>closeAction</code> is an example of the Action library. Once the <code>closeButton</code> has been tapped, the <code>closeButton</code> won't be usable until <code>sceneCoordinator.pop().asObservable().map { _ in }</code> emits an event.</li>
 	</ul>
+
 	<h4><a name="design-patterns">Design Patterns</a></h4>
-	<p>Explain use of SceneCoordinator and how it improves testability of VMs.</p>
-	<p>Explain use of Dependency Injection (Include testability)</p>
-	<p>Explain why I avoided using storyboards and tried to do constraints programatically</p>
+	<h5>Scene Coordinator</h5>
+	<p>One of my favourite aspects of the app (in terms of programming) is the SceneCoordinator service class. While not the same as the traditional coordinator pattern found in iOS (where there are child coordinators, one for each navigational flow), the SceneCoordinator still maintains the separation of navigation logic to display logic and couples closely with business logic - meaning you can write better & faster unit tests.</p>
+	<p>The coordinator is used to transition between scenes (ViewControllers) using whichever transition type specified (Root, Push, Modal, pop) by holding a reference to the current navigation controller and manipulating it whenever the scene needs to change.</p>
+	<p>This modified design pattern was first presented to me in the RayWenderlich RxSwift book.</p>
+
+	<h5>Dependency Injection</h5>
+	<p>The second major design pattern implemented in the RatesMate app was favouring dependency injection over my previous experience of singletons.</p>
+	<p>In total, there were three dependencies that were passed throughout the app:</p>
+	<ul>
+		<li><b>SceneCoordinator</b>: controls transitions between scenes - mentioned in the section above.</li>
+		<li><b>DatabaseHandler</b>: allows access to data pulled from the database source. This is the country information and currency exchange rates. Data pulled here is cached in the documents directory (file sharing is disabled so the user can't see these) when pulled and periodically pulls new exchange rates every 12 hours and new country information every 7 days.</li>
+		<li><b>IAPHandler</b>: encapsulates relevant StoreKit functionality, including unlocking the additional currencies, restoring previous purchases, the price of the additional unlock as well as requesting an app store review.</li>
+	</ul>
+	<p>Each of these dependencies is simply a protocol, with concrete implementations being passed between the classes. This means that if I were to switch database services, I would only need to update where the instance is first created and passed - rather than (if it was a singleton) changing many references to the singleton instance throughout the app.</p>
+	<p>It also makes the app much cleaner to test. If I was using singletons, I would need to update the shared instance to return a mock class when executed within an XCTest case. Not only does this mean you're affecting production code, but it also means that you need to make the state of the mock class multiple in order to update what the mock behaviour should be.</p>
+	<p>With dependency injection, I can keep the mock dependency class within the test bundle (nowhere near production code!) and pass that into the ViewModel initialiser when creating the ViewModel in unit tests - which also allows me full access to the mutable mock dependency class. Excellent!</p>
+
+	<h5>Programatic Constraints</h5>
+	<p>Having only previously used Autolayout and "UI building" in storyboards/xibs, switching to using programatic constraints was a daunting prospect. For the first few screens of the app I carried on with the familiarity and used storyboards, but soon realised that there are a large amount of companies that do their constraints completely programatically and without a storyboard due to the issues surrounding them (Source control diffs, magic strings for segues etc). Once I had realised that this was the case, I decided to switch to building the rest of my app using programatic constraints.</p>
+	<p>This task was nowhere near as daunting as I originally thought! Building the constraints can become verbose pretty quickly, but I believe people have already fixed this kind of issue in some frameworks - I'll likely take a look at those for my next project.</p>
+	<p>One thing did annoy me when I first started programatic constraints though: <code>translatesAutoresizingMaskIntoConstraints</code> is so easy to miss!</p>
 	</br>
 
 	<h2><a name="section4">Issues Faced</a></h2>
-	<p>Lack of familiarity with RxSwift, went and read the book</p>
+	<p>The biggest issue, by far, was going into this project without a good knowledge of RxSwift - how it works, how to structure the app, what the operators do or even the errors that are common and how to fix them.</p>
+	<p>After struggling with Rx for the first screen, I decided that trying to progress further without having a good base knowledge of both the Reactive paradigm and the actual framework itself would be counterproductive and would compound bad habits into my coding. I took a step back and picked up the <a target="_blank" href="https://store.raywenderlich.com/products/rxswift">RxSwift book by RayWenderlich.</a> I spent a week working my way through the material, performing the exercises and reading other materials around it. After that week, I moved back to the app and began work again.</p>
+	<p>The book helped <b>immensely</b> with understanding how I should structure my app. I learnt all the major operators and how to apply them, which traits and where to use them, and more. The only thing that it didn't really help me with was the plethora of uninformative RxSwift specific errors that occur when writing code. Those were a matter of just writing enough RxSwift related code to figure out.</p>
 	<p>Explain how the calculators work with expressions, explain changes required to get a large expression correct - including podspecs repo</p>
 	<p>Paragraph about Xcode's lack of useful errors when using RxSwift</p>
 	<p>GDPR compliance</p>
