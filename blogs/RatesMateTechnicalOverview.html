@@ -176,11 +176,27 @@
 	<h2><a name="section4">Issues Faced</a></h2>
 	<p>The biggest issue, by far, was going into this project without a good knowledge of RxSwift - how it works, how to structure the app, what the operators do or even the errors that are common and how to fix them.</p>
 	<p>After struggling with Rx for the first screen, I decided that trying to progress further without having a good base knowledge of both the Reactive paradigm and the actual framework itself would be counterproductive and would compound bad habits into my coding. I took a step back and picked up the <a target="_blank" href="https://store.raywenderlich.com/products/rxswift">RxSwift book by RayWenderlich.</a> I spent a week working my way through the material, performing the exercises and reading other materials around it. After that week, I moved back to the app and began work again.</p>
-	<p>The book helped <b>immensely</b> with understanding how I should structure my app. I learnt all the major operators and how to apply them, which traits and where to use them, and more. The only thing that it didn't really help me with was the plethora of uninformative RxSwift specific errors that occur when writing code. Those were a matter of just writing enough RxSwift related code to figure out.</p>
+	<p>The book helped <b>immensely</b> with understanding how I should structure my app. I learnt all the major operators and how to apply them, which traits and where to use them, and more. The only thing that it didn't really help me with was the plethora of uninformative RxSwift specific errors that occur when writing code. Those were a matter of just writing enough RxSwift related code to figure out. An example of these errors is "Statement is ambigious", which seems to usually be fixed by defining what type the parameters are and what type is returned by the closure.</p>
 	<p>Explain how the calculators work with expressions, explain changes required to get a large expression correct - including podspecs repo</p>
-	<p>Paragraph about Xcode's lack of useful errors when using RxSwift</p>
+	<p>I briefly mentioned the issue of math-related dependencies required in the <a href="#section2">technologies section.</a> I required two dependencies - one for big number datatypes in Swift and one to execute math expressions. Since both of these dependencies operate as separate entities, I required a merging of the two. Doing so required learning about how to use Cocoapods with private repositories - I forked both of the repos (i had to have a private repo of Big-Number due to some precision issues), updated the dependency to add the returning of big numbers from the expression library (and fixed the precision issues in Big-Number) and updated the podspec file in each of those repos to a private name. I then created a private podspec repo containing these podspecs, which are then included in the list of pods when using Cocoapods.</p>
+	<p>The solution, in terms of implementation, was pretty simple and didn't require a large amount of work. I was, however, surprised by the lack of information on how to do this - I thought that using private pods would be a common use case in the industry.</p>
 	<p>GDPR compliance</p>
+	<p>My app was close to ready to launch on the week of May 25th. The week that GDPR came into action, if you don't remember. I spent a large amount of time reading over the legislation and what it meant for my app. Although I wasn't specifically gathering user information or using personal details, I do use pseudonymous analytic information/crashlytics in my app to track time spent on the app and improve the app. Under GDPR, this requires the users consent.</p>
+	<p>The solution I implemented for this issue was to show the user an alert dialog upon launch and ask for consent for analytics & crashlytics. While this isn't the best user experience, it does ensure that my analytics/crashlytics is enabled straight away in the app and allows users to immediately opt out.</p>
 	<p>Minor issue, explain use of border animations for currencies when launching app</p>
+	<p>A large amount of time was spent making small UX changes to accommodate for "less computer inclined" users. Ensuring the app is usable and intuitive for all users was very important to me.</p>
+	<p>An example of one of these changes is the border animation around the country flags on the calculator screen. After giving the app to a few non-tech oriented users, I noticed that they were struggle to understand how to change between currencies (by clicking on the country/currency flag), despite the younger audiences instantly understanding that clicking the flags would allow them to switch between currencies.</p>
+	<p>I had two options:</p>
+	<ul>
+		<li>Make a user/help guide. I didn't like this option, as the app should be simple and intuitive enough to not require a step-by-step. Maybe if more complexity was added to the app, then this would be acceptable, but in it's current state it should be easy enough to use that anyone can pick it up and figure it out without too much issue. A section in the out-of-box/onboarding flow would have sufficed as a help guide.</li>
+		<li>Add some kind of indication that the flag is interactive. Once the user has selected it even once, then that should be enough for them to remember the next time. Either a full flag animation (fading in/out or changing alpha over a grey background) or adding a border animation. I figured the full flag animation may be a bit disruptive to the users that already know how to switch currencies, so instead opted for the border animation. The implementation for this was trivial.</li>
+	</ul>
+	<center>
+		<figure>
+			<img src="../images/RatesMateBorderAnimation.gif" alt="Example of border animation" height=500>
+			<figcaption><h5>RatesMate Border Animation</h5></figcaption>
+		</figure>
+	</center>
 	</br>
 
 	<h2><a name="section5">Future Improvements</a></h2>
@@ -192,6 +208,8 @@
 	Currently implemented as UserDefaults extension, but this prevents stored properties meaning I can't use UserDefaults
 	properties as observables.</p>
 	<p>Notifications for when Rates drop below a certain amount</p>
+	<p>Make accessible (VoiceOver, larger text fonts)</p>
+	<p>Add force touch to change currencies</p>
 	</br>
 
 	<h2><a name="section6">Misc</a></h2>
