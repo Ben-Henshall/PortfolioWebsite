@@ -70,7 +70,7 @@
 		<a href="#section3"><li>Architecture & Design Patterns</li></a>
 		<a href="#section4"><li>Issues Faced</li></a>
 		<a href="#section5"><li>Future Improvements</li></a>
-		<a href="#section6"><li>Misc</li></a>
+		<a href="#section6"><li>Other Stuff</li></a>
 		<a href="#section7"><li>Special Thanks</li></a>
 	</ol>
 	</br>
@@ -214,9 +214,18 @@
 	</ul>
 	</br>
 
-	<h2><a name="section6">Misc</a></h2>
-	<p>Praise Codable</p>
+	<h2><a name="section6">Other Stuff</a></h2>
+	<h5>Codable</h5>
+	<p>This project was the first chance to experience the Codable changes from Swift 4.0 first hand. I had seen many, many blog posts discussing the new changes but hadn't used them yet. The simplicity of converting a JSON structure into models is fantastic. Being able to easily override a property to convert it into another is awesome. For example, in my JSON I have a property of subregion. In my Codable model, I take the subregion and convert it into a new property of Continent with only an additional line of code in my model.</p>
 	<p>Praise multi line editing</p>
+	<h5>Xcode 10 editor changes</h5>
+	<p>One of my biggest gripes of being an iOS developer is having to use Xcode. While AppCode is technically an option, I find it's support for Swift not as good as when used with Obj-C. The Xcode team are making changes, but these seem to fall flat a lot of the time. Large refactoring functionality was introduced in Xcode 9, but never seems to be available and crashes Xcode often. During writing unit tests, I decided to try out the editing changes for Xcode 10 - the multi-line editing is GREAT! (but has also available in most other IDEs for a while now)</p>
+	<center>
+		<figure>
+			<img src="../images/XcodeMultiLineEditing.gif" alt="Example of Xcode 10 multi-line editing" height=150>
+			<figcaption><h5>Xcode 10 multi-line editing support</h5></figcaption>
+		</figure>
+	</center>
 	<p>Post gist of Rx Action areNoActionsExecuting and give explanation</p>
 	<p>StoreKit sucks for developers</p>
 	</br>
