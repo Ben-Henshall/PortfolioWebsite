@@ -200,16 +200,18 @@
 	</br>
 
 	<h2><a name="section5">Future Improvements</a></h2>
-	<p>Want to add a history graph for currencies, but would have to pay for an extra API Service</p>
-	<p>Want to integrate cryptocurrencies</p>
-	<p>Want to add today extension - a small calculator that only includes numbers, clear and erase</p>
-	<p>Refactor Calculator view model, as it is currently quite large and should be split into other services/classes</p>
-	<p>Refactor UserDefaults to be encapsulated within handler class, which is passed around through DI.
-	Currently implemented as UserDefaults extension, but this prevents stored properties meaning I can't use UserDefaults
-	properties as observables.</p>
-	<p>Notifications for when Rates drop below a certain amount</p>
-	<p>Make accessible (VoiceOver, larger text fonts)</p>
-	<p>Add force touch to change currencies</p>
+	<p>While my app is finished for now, there is still a large amount of functionality that I would like to add in the future:</p>
+	<ul>
+		<li><b>A history graph for currency exchange rates.</b> I skipped over this in the initial version as it required using an API which was not free to use. In the future I will be adding a button on the calculator screen to view an interactive graph of rates for each currency I have data for, allowing users to specify a range of dates to view data for.</li>
+		<li><b>Add more unconventional currencies, such as cryptocurrencies to the currency list.</b> I left this out of the first update due to time, but it wouldn't require much effort to add in. It would simply be adding another API source to my backend and integrating a "Bitcoin/Ethereum" type country object into the backend too.</li>
+		<li><b>Add a today extension for converting between currencies.</b> This was left out due to time limits on the project and would require a little bit of effort to modularise the calculator UI a bit more. The today extension would have a calculator without operations, only allowing erase, clear and 0-9 due to space restrictions.</li>
+		<li><b>Add notifications for when currency rates drop below a certain amount.</b> This could be done using Firebase cloud messaging or just by checking through enabled notifications every time the app pulls new rates (within normal working hours to avoid a notification waking users up).</li>
+		<li><b>Make the app more accessible for users.</b> This shouldn't have been an afterthought and should have been implemented as the app was built. This includes VoiceOver and checking that larger accessibility font sizes still function correctly. A large amount of the VoiceOver text should already be complete due to most of the UI elements being based on UIKit classes, but there are still a few pieces missing.</li>
+		<li><b>Refactor the Calculator ViewModel.</b> The CalculatorVM grew to be quite large due to the amount of functionality on that screen. Upon reflection, the operations aspect of the calculator should have been moved to a service (CalculatorBrainService) class, only exposing the total value and operations string to the ViewModel for display purposes. The CalculatorVM should only be converting the total value to each of the currencies.</li>
+		<li><b>Refactor UserDefaults into a service class and pass it as a dependency.</b> The app stores some pieces of data in UserDefaults for persistence between sessions (Previous total, previously selected currencies, favourited currencies etc). The app accesses UserDefaults using an extension to the UserDefaults class, meaning data is accessed through functions and computed properties. What this means is that you cannot access values as an observable as differnet parts of the app would retrieve different instances of observables if accessed through computed properties or functions. This makes accessing/inserting data into UserDefaults very rx-unfriendly.
+		</br>
+		The solution I would implement would be to encapsulate a UserDefaults instance in another class, which exposes observables that write to UserDefaults when changed. This would allow other parts of the app to listen for events, rather than accessing the data in an imperative manner.</li>
+	</ul>
 	</br>
 
 	<h2><a name="section6">Misc</a></h2>
