@@ -121,7 +121,7 @@
 	<p>In terms of iOS SDK APIs, I made use of both UIKit (Pretty much guaranteed in any iOS project) and StoreKit.</p>
 	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods (due to statically linked libraries). I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
 	<p>During the design phase, I designed wireframes in Sketch to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
-	<p>To maintain a consistent code style, I added Swiftlint as a run script phase.</p>
+	<p>I used Swiftlint, which adds custom Xcode warnings/errors defined by a set of rules, aimed at keeping your code style consistent across the codebase - e.g., throw a warning if an mutable (let) variable is never mutated or an error if a function body is over a certain number of lines.<p/>
 	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build, as well as allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
 	<p>The project was maintained in source control with Git on the GitLab service.</p>
 	<center>
@@ -217,7 +217,6 @@
 	<h2><a name="section6">Other Stuff</a></h2>
 	<h5>Codable</h5>
 	<p>This project was the first chance to experience the Codable changes from Swift 4.0 first hand. I had seen many, many blog posts discussing the new changes but hadn't used them yet. The simplicity of converting a JSON structure into models is fantastic. Being able to easily override a property to convert it into another is awesome. For example, in my JSON I have a property of subregion. In my Codable model, I take the subregion and convert it into a new property of Continent with only an additional line of code in my model.</p>
-	<p>Praise multi line editing</p>
 	<h5>Xcode 10 editor changes</h5>
 	<p>One of my biggest gripes of being an iOS developer is having to use Xcode. While AppCode is technically an option, I find it's support for Swift not as good as when used with Obj-C. The Xcode team are making changes, but these seem to fall flat a lot of the time. Large refactoring functionality was introduced in Xcode 9, but never seems to be available and crashes Xcode often. During writing unit tests, I decided to try out the editing changes for Xcode 10 - the multi-line editing is GREAT! (but has also available in most other IDEs for a while now)</p>
 	<center>
@@ -226,8 +225,6 @@
 			<figcaption><h5>Xcode 10 multi-line editing support</h5></figcaption>
 		</figure>
 	</center>
-	<p>Post gist of Rx Action areNoActionsExecuting and give explanation</p>
-	<p>StoreKit sucks for developers</p>
 	</br>
 
 	<h2><a name="section7">Special Thanks</a></h2>
