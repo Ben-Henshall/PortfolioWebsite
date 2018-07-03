@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+href="https://github.com/fastlane/fastlane">href="https://restcountries.eu/">href="https://github.com/">href="https://github.com/mkrd/Swift-Big-Integer">href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/"><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -62,22 +62,22 @@
 		<a target="_blank" href="https://www.appstore.com/RatesMateCurrencyConverter">
 			<img class="appicon-center" src="../images/RatesMateAppIcon.png" alt="RatesMate app icon" width="200">
 		</a>
-		<h1>RatesMate - A technical overview // TODO, add links to frameworks</h1>
+		<h1>RatesMate - A technical overview</h1>
 
 	<ol>
-		<a href="#section1"><li>What is RatesMate, and why does it exist? // TODO, change href names</li></a>
-		<a href="#section2"><li>Technologies</li></a>
-		<a href="#section3"><li>Architecture & Design Patterns</li></a>
-		<a href="#section4"><li>Issues Faced</li></a>
-		<a href="#section5"><li>Future Improvements</li></a>
-		<a href="#section6"><li>Other Stuff</li></a>
-		<a href="#section7"><li>Special Thanks</li></a>
+		<a href="#introduction"><li>What is RatesMate, and why does it exist?</li></a>
+		<a href="#technologies"><li>Technologies</li></a>
+		<a href="#design"><li>Architecture & Design Patterns</li></a>
+		<a href="#issues"><li>Issues Faced</li></a>
+		<a href="#improvements"><li>Future Improvements</li></a>
+		<a href="#other-stuff"><li>Other Stuff</li></a>
+		<a href="#special-thanks"><li>Special Thanks</li></a>
 	</ol>
 	</br>
-	<h2><a name="section1">What is RatesMate, and why does it exist?</a></h2>
+	<h2><a name="introduction">What is RatesMate, and why does it exist?</a></h2>
 	<div class="grid">
 		<div class="col-2-3">
-			<p>RatesMate is a simple yet powerful currency conversion app. RatesMate includes currency rates for over 150 currencies and includes tipping customs for 65 countries.</p>
+			<p><a target="_blank" href="https://www.appstore.com/RatesMateCurrencyConverter">RatesMate</a> is a simple yet powerful currency conversion app. RatesMate includes currency rates for over 150 currencies and includes tipping customs for 65 countries.</p>
 			<p>RatesMate was designed and built as a portfolio app. An app which would further me as an iOS developer and allow me to see the full design, implementation and release stages of an iOS project. More specifically, I could use it as an opportunity to try using RxSwift in a full app implementation.</p>
 			<p>The reason I decided to create a currency conversion app boils down to a few things:</p>
 			<ul>
@@ -99,32 +99,32 @@
 	<p>I aimed to keep the UX design simple and focus heavily on good code practices, architecture and design patterns. A summary of these implementation details will be discussed in the following sections.</p>
 	</br>
 
-	<h2><a name="section2">Technologies</a></h2>
-	<p>As mentioned in the previous chapter, one of the main driving forces behind RatesMate was the desire to use RxSwift in a full app environment. The entirety of the app makes use of the reactive programming paradigm - networking, data flow and even the chaining of animations.</p>
+	<h2><a name="technologies">Technologies</a></h2>
+	<p>As mentioned in the previous chapter, one of the main driving forces behind RatesMate was the desire to use <a target="_blank" href="https://github.com/ReactiveX/RxSwift">RxSwift</a> in a full app environment. The entirety of the app makes use of the reactive programming paradigm - networking, data flow and even the chaining of animations.</p>
 	<p>Paired with RxSwift, I made use of RxCocoa. RxCocoa contains a bunch of useful Cocoa extensions to provide "Rx-y" functionality - such as being able to functionally use the response from a URLSession through an observable, or publishing text property updates to UILabels through bindings.</p>
 	<p>Both RxTest and RxBlocking are included in the same repo as RxSwift and RxCocoa. These are used extensively in my unit tests, to efficiently and correctly verify that modules of my code are working as intended, allowing me to confidently refactor in the future.</p>
 	<p>Other Rx related libraries used were:</p>
 	<ul>
-		<li><b>RxAnimated:</b> Allows animated sinks to be added to data bindings - rather than normally binding a subject to say, a UILabels text bindable, you can specify an animation type and duration, so that when the subject emits an event the UILabel updates the text property with the given animation.</li>
-		<li><b>Action:</b> Used to execute work by subscribing to an observable when the action receives an input. Allows the button state to be disabled while the observable is being subscribed to, preventing multiple executions</li>
-		<li><b>RxDataSources:</b> RxCocoa offers some extensions for powering UITableView, but they're not quite as powerful as using RxDataSources. RxDataSources has an highly optimised diff algorithm for animating the insertion, deletion and updating of cell positioning within a UITableView.</li>
-		<li><b>RxGesture:</b> Converts gesture events into an observable stream. I only really use this in the continent selection screen, but wanted to try out the library so added it as a dependency anyway.</li>
-		<li><b>RxStoreKit:</b> Allows access to the StoreKit API in a functional, reactive manner.</li>
+		<li><b><a target="_blank" href="https://github.com/RxSwiftCommunity/RxAnimated">RxAnimated:</a></b> Allows animated sinks to be added to data bindings - rather than normally binding a subject to say, a UILabels text bindable, you can specify an animation type and duration, so that when the subject emits an event the UILabel updates the text property with the given animation.</li>
+		<li><b><a target="_blank" href="https://github.com/RxSwiftCommunity/Action">Action:</a></b> Used to execute work by subscribing to an observable when the action receives an input. Allows the button state to be disabled while the observable is being subscribed to, preventing multiple executions.</li>
+		<li><b><a target="_blank" href="https://github.com/RxSwiftCommunity/RxDataSources">RxDataSources:</a></b> RxCocoa offers some extensions for powering UITableView, but they're not quite as powerful as using RxDataSources. RxDataSources has an highly optimised diff algorithm for animating the insertion, deletion and updating of cell positioning within a UITableView.</li>
+		<li><b><a target="_blank" href="https://github.com/RxSwiftCommunity/RxGesture">RxGesture:</a></b> Converts gesture events into an observable stream. I only really use this in the continent selection screen, but wanted to try out the library so added it as a dependency anyway.</li>
+		<li><b><a target="_blank" href="https://github.com/glassonion1/RxStoreKit">RxStoreKit:</a></b> Allows access to the StoreKit API in a functional, reactive manner.</li>
 	</ul>
-	<p>To help with debugging in both the development stage and in production, I used the CocoaLumberjack logging framework as I am familiar with it.</p>
+	<p>To help with debugging in both the development stage and in production, I used the <a target="_blank" href="https://github.com/CocoaLumberjack/CocoaLumberjack">CocoaLumberjack logging framework</a> as I am familiar with it.</p>
 	<p>Evaluating calculations that the user has entered required two dependencies. The calculator had to be able to evaluate a string of operations (e.g. "1 + 2 / 3") and be able to deal with very large denominations of currency, since some conversions would be in large amounts (An example being converting Euros to Vietnamese Dong).
-		For the first requirement, I used "Expression", an iOS library that can evaluate a string and output a double value. For the second requirement, I used Swift-Big-Number.</p>
+		For the first requirement, I used <a target="_blank" href="https://github.com/nicklockwood/Expression">Expression</a>, an iOS library that can evaluate a string and output a double value. For the second requirement, I used <a target="_blank" href="https://github.com/mkrd/Swift-Big-Integer">Swift-Big-Number.</a></p>
 	<p>However, due to Expression outputting the value as a double as the largest datatype, I had to use a modified version of Expression that included the BigNumber library, which could then evaluate an expression and return a BigNumber datatype instead.
-		The BigNumber library also required some modification to fix some accuracy issues, so I forked both of these repos and stored them on my own GitHub. I updated the podspecs and created my own private podspecs repo, so that I could use CocoaPods to load private repos.</p>
+		The BigNumber library also required some modification to fix some accuracy issues, so I forked both of these repos and stored them on my own <a target="_blank" href="https://github.com/">GitHub.</a> I updated the podspecs and created my own private podspecs repo, so that I could use CocoaPods to load private repos.</p>
 
-	<p>I opted for Firebase as my backend technology, using a combination of both the database and cloud functions. I load from 2 APIs, one for country info (REST Countries) and one for currency exchange rates (CurrencyLayer). These are loaded into the database by two cloud functions (Cloud functions are JS code executed upon a GET request to an address), which is then pulled down to the app. These functions are executed by Cron jobs hosted by another free service.</p>
+	<p>I opted for <a target="_blank" href="https://firebase.google.com/">Firebase</a> as my backend technology, using a combination of both the database and cloud functions. I load from 2 APIs, one for country info <a target="_blank" href="https://restcountries.eu/">(REST Countries)</a> and one for currency exchange rates <a target="_blank" href="https://currencylayer.com/">(CurrencyLayer).</a> These are loaded into the database by two cloud functions (Cloud functions are JS code executed upon a GET request to an address), which is then pulled down to the app. These functions are executed by Cron jobs hosted by another free service.</p>
 	<p>Using Firebase in this approach may have been overkill, since I'm not making use of many of the features Firebase has to offers, but I struggled to find a free cloud computing service that would let me host my own endpoint, without having to run my own server. I suppose I now get Firebase analytics without any extra hassle.</p>
 	<p>In terms of iOS SDK APIs, I made use of both UIKit (Pretty much guaranteed in any iOS project) and StoreKit.</p>
-	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods due to statically linked libraries. I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
-	<p>During the design phase, I designed wireframes in Sketch to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
-	<p>I used Swiftlint, which adds custom Xcode warnings/errors defined by a set of rules, aimed at keeping your code style consistent across the codebase - e.g., throw a warning if an mutable (var) variable is never mutated or an error if a function body is over a certain number of lines.<p/>
-	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build and allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
-	<p>The project was maintained in source control with Git on the GitLab service.</p>
+	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods due to statically linked libraries. I began the project using <a target="_blank" href="https://github.com/Carthage/Carthage">Carthage,</a> which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
+	<p>During the design phase, I designed wireframes in <a target="_blank" href="https://www.sketchapp.com/">Sketch</a> to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
+	<p>I used <a target="_blank" href="https://github.com/realm/SwiftLint">Swiftlint,</a> which adds custom Xcode warnings/errors defined by a set of rules, aimed at keeping your code style consistent across the codebase - e.g., throw a warning if an mutable (var) variable is never mutated or an error if a function body is over a certain number of lines.<p/>
+	<p>I managed the app store metadata and released builds to <a target="_blank" href="https://developer.apple.com/testflight/">TestFlight</a> using <a target="_blank" href="https://github.com/fastlane/fastlane">fastlane.</a> This dramatically sped up the process of releasing a beta/release build and allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
+	<p>The project was maintained in source control with <a target="_blank" href="https://git-scm.com/">Git</a> on the <a target="_blank" href="https://gitlab.com/">GitLab service.</a></p>
 	<center>
 		<figure>
 			<img src="../images/GitHistoryScreenshot.png" alt="Git commit frequency graph" width=50%>
@@ -133,7 +133,7 @@
 	</center>
 	</br>
 
-	<h2><a name="section3">Architecture & Design Patterns</a></h2>
+	<h2><a name="design">Architecture & Design Patterns</a></h2>
 	<h4>Architecture</h4>
 	<p>When it came to deciding on an architecture, I narrowed down to two choices: the traditional <b>M</b>odel-<b>V</b>iew-<b>C</b>ontroller pattern or <b>M</b>odel-<b>V</b>iew-<b>V</b>iew<b>M</b>odel.</p>
 	<p>I had used both architectures in projects previously, MVC in smaller personal projects and MVVM at my previous workplace. The argument for each was fairly even.</p>
@@ -154,7 +154,7 @@
 	<h5>Scene Coordinator</h5>
 	<p>One of my favourite aspects of the app (in terms of programming) is the SceneCoordinator service class. While not the same as the traditional coordinator pattern found in iOS (where there are child coordinators, one for each navigational flow), the SceneCoordinator still maintains the separation of navigation logic to display logic and couples closely with business logic - meaning you can write better & faster unit tests.</p>
 	<p>The coordinator is used to transition between scenes (ViewControllers) using whichever transition type specified (Root, Push, Modal, pop) by holding a reference to the current navigation controller and manipulating it whenever the scene needs to change.</p>
-	<p>This modified design pattern was first presented to me in the RayWenderlich RxSwift book.</p>
+	<p>This modified design pattern was first presented to me in the <a target="_blank" href="https://store.raywenderlich.com/products/rxswift">RayWenderlich RxSwift book.</a></p>
 
 	<h5>Dependency Injection</h5>
 	<p>The second major design pattern implemented in the RatesMate app was favouring dependency injection over my previous experience of singletons.</p>
@@ -174,13 +174,13 @@
 	<p>One thing did annoy me when I first started programatic constraints though: <code>translatesAutoresizingMaskIntoConstraints</code> is so easy to miss!</p>
 	</br>
 
-	<h2><a name="section4">Issues Faced</a></h2>
+	<h2><a name="issues">Issues Faced</a></h2>
 	<p>The biggest issue, by far, was going into this project without a strong base knowledge of RxSwift - how it works, how to structure the app, what the operators do or even the errors that are common and how to fix them.</p>
 	<p>After struggling with Rx for the first screen, I decided that trying to progress further without having a good base knowledge of both the Reactive paradigm and the actual framework itself would be counterproductive and would compound bad habits into my coding. I took a step back and picked up the <a target="_blank" href="https://store.raywenderlich.com/products/rxswift">RxSwift book by RayWenderlich.</a> I spent a week working my way through the material, performing the exercises and reading other materials around it. After that week, I moved back to the app and began work again.</p>
 	<p>The book helped <b>immensely</b> with understanding how I should structure my app. I learnt all the major operators and how to apply them, what the variety of traits do, and where to use them and more. The only thing that it didn't really help me with was the plethora of uninformative RxSwift specific errors that occur when writing code. Those were a matter of just writing enough RxSwift related code to figure out. An example of these errors is "Statement is ambiguous", which seems to usually be fixed by defining what type the parameters are and what type is returned by the closure.</p>
-	<p>I briefly mentioned the issue of math-related dependencies required in the <a href="#section2">technologies section.</a> I required two dependencies - one for big number datatypes in Swift and one to execute math expressions. Since both of these dependencies operate as separate entities, I required a merging of the two. Doing so required learning about how to use Cocoapods with private repositories - I forked both of the repos (i had to have a private repo of Big-Number due to some precision issues), updated the dependency to add the returning of big numbers from the expression library (and fixed the precision issues in Big-Number) and updated the podspec file in each of those repos to a private name. I then created a private podspec repo containing these podspecs, which are then included in the list of pods when using Cocoapods.</p>
+	<p>I briefly mentioned the issue of math-related dependencies required in the <a href="#technologies">technologies section.</a> I required two dependencies - one for big number datatypes in Swift and one to execute math expressions. Since both of these dependencies operate as separate entities, I required a merging of the two. Doing so required learning about how to use Cocoapods with private repositories - I forked both of the repos (i had to have a private repo of Big-Number due to some precision issues), updated the dependency to add the returning of big numbers from the expression library (and fixed the precision issues in Big-Number) and updated the podspec file in each of those repos to a private name. I then created a private podspec repo containing these podspecs, which are then included in the list of pods when using Cocoapods.</p>
 	<p>The solution, in terms of implementation, was pretty simple and didn't require a large amount of work. I was, however, surprised by the lack of information on how to do this - I thought that using private pods would be a common use case in the industry.</p>
-	<p>My app was close to ready to launch on the week of May 25th. The week that GDPR came into action, if you don't remember. I spent a large amount of time reading over the legislation and what it meant for my app. Although I wasn't specifically gathering user information or using personal details, I do use pseudonymous analytic information/crashlytics in my app to track time spent on the app and improve the app. Under GDPR, this requires the users consent.</p>
+	<p>My app was close to ready to launch on the week of May 25th. The week that <a target="_blank" href="https://ico.org.uk/for-organisations/guide-to-the-general-data-protection-regulation-gdpr/">GDPR</a> came into action, if you don't remember. I spent a large amount of time reading over the legislation and what it meant for my app. Although I wasn't specifically gathering user information or using personal details, I do use pseudonymous analytic information/crashlytics in my app to track time spent on the app and improve the app. Under GDPR, this requires the users consent.</p>
 	<p>The solution I implemented for this issue was to show the user an alert dialog upon launch and ask for consent for analytics & crashlytics. While this isn't the best user experience, it does ensure that my analytics/crashlytics is enabled straight away in the app and allows users to immediately opt out.</p>
 	<p>A large amount of time was spent making small UX changes to accommodate for "less computer inclined" users. Ensuring the app is usable and intuitive for all users was very important to me.</p>
 	<p>An example of one of these changes is the border animation around the country flags on the calculator screen. After giving the app to a few non-tech oriented users, I noticed that they were struggle to understand how to change between currencies (by clicking on the country/currency flag), despite the younger audiences instantly understanding that clicking the flags would allow them to switch between currencies.</p>
@@ -197,7 +197,7 @@
 	</center>
 	</br>
 
-	<h2><a name="section5">Future Improvements</a></h2>
+	<h2><a name="improvements">Future Improvements</a></h2>
 	<p>While my app is finished for now, there is still a large amount of functionality that I would like to add in the future:</p>
 	<ul>
 		<li><b>A history graph for currency exchange rates.</b> I skipped over this in the initial version as it required using an API that is not free to use. In the future I will be adding a button on the calculator screen to view an interactive graph of rates for each currency I have data for, allowing users to specify a range of dates to view data for.</li>
@@ -212,7 +212,7 @@
 	</ul>
 	</br>
 
-	<h2><a name="section6">Other Stuff</a></h2>
+	<h2><a name="other-stuff">Other Stuff</a></h2>
 	<h5>Codable</h5>
 	<p>This project was the first chance to experience the Codable changes from Swift 4.0 first hand. I had seen many, many blog posts discussing the new changes but hadn't used them yet. The simplicity of converting a JSON structure into models is fantastic. Being able to easily override a property to convert it into another is awesome. For example, in my JSON I have a property of subregion. In my Codable model class, I take the subregion and convert it into a new property of Continent with only an additional line of code in my model.</p>
 	<h5>Xcode 10 editor changes</h5>
@@ -225,7 +225,7 @@
 	</center>
 	</br>
 
-	<h2><a name="section7">Special Thanks</a></h2>
+	<h2><a name="special-thanks">Special Thanks</a></h2>
 	<p><a target="_blank" href="https://www.thebasetrip.com/">The BaseTrip</a> for allowing me to use their information on tipping data pro-bono.</p>
 	<p><a target="_blank" href="https://www.raywenderlich.com/">RayWenderlich</a> for their <a target="_blank" href="https://store.raywenderlich.com/products/rxswift"> extremely helpful RxSwift book</a> and other general iOS tutorials.</p>
 	<p>The RxSwift community - most notably the <a target="_blank" href="https://rxswift-slack.herokuapp.com/">Slack channel</a></p>
