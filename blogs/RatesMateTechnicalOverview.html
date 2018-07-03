@@ -65,7 +65,7 @@
 		<h1>RatesMate - A technical overview // TODO, add links to frameworks</h1>
 
 	<ol>
-		<a href="#section1"><li>What is RatesMate, and why does it exist?</li></a>
+		<a href="#section1"><li>What is RatesMate, and why does it exist? // TODO, change href names</li></a>
 		<a href="#section2"><li>Technologies</li></a>
 		<a href="#section3"><li>Architecture & Design Patterns</li></a>
 		<a href="#section4"><li>Issues Faced</li></a>
@@ -76,22 +76,24 @@
 	</br>
 	<h2><a name="section1">What is RatesMate, and why does it exist?</a></h2>
 	<div class="grid">
-		<div class="col-1-3">
-			<figure>
-				<img src="../images/RatesMateScreenshot.png" width=100%></img>
-				<figcaption><h5>RatesMate Currency Converter</h5></figcaption>
-			</figure>
-		</div>
 		<div class="col-2-3">
 			<p>RatesMate is a simple yet powerful currency conversion app. RatesMate includes currency rates for over 150 currencies and includes tipping customs for 65 countries.</p>
-			<p>RatesMate was designed and built as a portfolio app. An app which further me as an iOS developer and allow me to see the full design, implementation and release stages of an iOS project. More specifically, I could use it as an opportunity to try using RxSwift in a full app implementation.</p>
+			<p>RatesMate was designed and built as a portfolio app. An app which would further me as an iOS developer and allow me to see the full design, implementation and release stages of an iOS project. More specifically, I could use it as an opportunity to try using RxSwift in a full app implementation.</p>
 			<p>The reason I decided to create a currency conversion app boils down to a few things:</p>
 			<ul>
 				<li><p>The app would make use <b>free</b> REST APIs. I wanted the only financial investment to be the Apple developer account fee.</p></li>
 				<li><p>Updating information asynchronously over the networking, then propagating the received data throughout the app is a perfect use case for the Rx paradigm.</p></li>
-				<li><p>The tipping unique selling point of the app isn't implemented in too many conversion apps that I have seen.</p></li>
+				<li><p>The tipping unique selling point of the app isn't implemented in too many currency conversion apps that I have seen.</p></li>
 				<li><p>It would be an app I would make use of whenever I go abroad.</p></li>
 			</ul>
+		</div>
+		<div class="col-1-3">
+			<figure>
+				<a target="_blank" href="https://www.appstore.com/RatesMateCurrencyConverter">
+					<img src="../images/RatesMateScreenshot.png" width=100%></img>
+					<figcaption><h5>RatesMate Currency Converter</h5></figcaption>
+				</a>
+			</figure>
 		</div>
 	</div>
 	<p>I aimed to keep the UX design simple and focus heavily on good code practices, architecture and design patterns. A summary of these implementation details will be discussed in the following sections.</p>
@@ -99,13 +101,13 @@
 
 	<h2><a name="section2">Technologies</a></h2>
 	<p>As mentioned in the previous chapter, one of the main driving forces behind RatesMate was the desire to use RxSwift in a full app environment. The entirety of the app makes use of the reactive programming paradigm - networking, data flow and even the chaining of animations.</p>
-	<p>Paired with RxSwift, I made use of RxCocoa. RxCocoa contains a bunch of useful Cocoa extensions to provide rx-y functionality - such as being able to use the response from a URLSession through an observable, or publishing text property updates to UILabels through bindings.</p>
-	<p>Both RxTest and RxBlocking are included in the same repo as RxSwift and RxCocoa. These are used extensively in my unit tests, to efficiently and correctly ensure that my code is working, allowing me to confidently refactor in the future.</p>
+	<p>Paired with RxSwift, I made use of RxCocoa. RxCocoa contains a bunch of useful Cocoa extensions to provide "Rx-y" functionality - such as being able to functionally use the response from a URLSession through an observable, or publishing text property updates to UILabels through bindings.</p>
+	<p>Both RxTest and RxBlocking are included in the same repo as RxSwift and RxCocoa. These are used extensively in my unit tests, to efficiently and correctly verify that modules of my code are working as intended, allowing me to confidently refactor in the future.</p>
 	<p>Other Rx related libraries used were:</p>
 	<ul>
 		<li><b>RxAnimated:</b> Allows animated sinks to be added to data bindings - rather than normally binding a subject to say, a UILabels text bindable, you can specify an animation type and duration, so that when the subject emits an event the UILabel updates the text property with the given animation.</li>
 		<li><b>Action:</b> Used to execute work by subscribing to an observable when the action receives an input. Allows the button state to be disabled while the observable is being subscribed to, preventing multiple executions</li>
-		<li><b>RxDataSources:</b> RxCocoa offers some extensions for powering UITableView, but they're not quite as powerful as using RxDataSources. RxDataSources has an highly optimised diff algorithm for inserting, deleting and updating cell content within a UITableView.</li>
+		<li><b>RxDataSources:</b> RxCocoa offers some extensions for powering UITableView, but they're not quite as powerful as using RxDataSources. RxDataSources has an highly optimised diff algorithm for animating the insertion, deletion and updating of cell positioning within a UITableView.</li>
 		<li><b>RxGesture:</b> Converts gesture events into an observable stream. I only really use this in the continent selection screen, but wanted to try out the library so added it as a dependency anyway.</li>
 		<li><b>RxStoreKit:</b> Allows access to the StoreKit API in a functional, reactive manner.</li>
 	</ul>
@@ -115,14 +117,13 @@
 	<p>However, due to Expression outputting the value as a double as the largest datatype, I had to use a modified version of Expression that included the BigNumber library, which could then evaluate an expression and return a BigNumber datatype instead.
 		The BigNumber library also required some modification to fix some accuracy issues, so I forked both of these repos and stored them on my own GitHub. I updated the podspecs and created my own private podspecs repo, so that I could use CocoaPods to load private repos.</p>
 
-	<p>I opted for Firebase as my backend technology, using a combination of both the database and cloud functions. I load from 2 APIs, one for country info and one for currency exchange rates. These are loaded into the database by two cloud functions (Cloud functions are JS code executed upon a GET request to an address), which is then pulled down to the app. These functions are executed by Cron jobs hosted by another free service.</p>
+	<p>I opted for Firebase as my backend technology, using a combination of both the database and cloud functions. I load from 2 APIs, one for country info (REST Countries) and one for currency exchange rates (CurrencyLayer). These are loaded into the database by two cloud functions (Cloud functions are JS code executed upon a GET request to an address), which is then pulled down to the app. These functions are executed by Cron jobs hosted by another free service.</p>
 	<p>Using Firebase in this approach may have been overkill, since I'm not making use of many of the features Firebase has to offers, but I struggled to find a free cloud computing service that would let me host my own endpoint, without having to run my own server. I suppose I now get Firebase analytics without any extra hassle.</p>
-	<p>The APIs used were RESTCountries and CurrencyLayer.</p>
 	<p>In terms of iOS SDK APIs, I made use of both UIKit (Pretty much guaranteed in any iOS project) and StoreKit.</p>
-	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods (due to statically linked libraries). I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
+	<p>All of the above dependencies were integrated using CocoaPods (some through a private podspec as mentioned above), as Firebase requires installation using CocoaPods due to statically linked libraries. I began the project using Carthage, which is my preference. I usually setup Carthage to not build the checkouts and to instead incorporate the checkouts into a single workspace, allowing me to control what is built for each target.</p>
 	<p>During the design phase, I designed wireframes in Sketch to get an idea of what I wanted the app to look like. I also designed the app logo in Sketch.</p>
-	<p>I used Swiftlint, which adds custom Xcode warnings/errors defined by a set of rules, aimed at keeping your code style consistent across the codebase - e.g., throw a warning if an mutable (let) variable is never mutated or an error if a function body is over a certain number of lines.<p/>
-	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build, as well as allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
+	<p>I used Swiftlint, which adds custom Xcode warnings/errors defined by a set of rules, aimed at keeping your code style consistent across the codebase - e.g., throw a warning if an mutable (var) variable is never mutated or an error if a function body is over a certain number of lines.<p/>
+	<p>I managed the app store metadata and released builds to TestFlight using fastlane. This dramatically sped up the process of releasing a beta/release build and allowed me to clearly store the app store metadata under version control. The app store screenshots were produced using fastlanes snapshot & frameit.</p>
 	<p>The project was maintained in source control with Git on the GitLab service.</p>
 	<center>
 		<figure>
@@ -139,11 +140,11 @@
 	<p>One of the most popular reasons to avoid MVC to avoiding is ViewController bloat, but this only really becomes an issue if MVC is implemented badly. Functionality should still be separated from view controllers into separate units (Handlers, service classes, extensions etc). MVC starts to go awry when the requirements for functionality to be separated into new units is not clearly defined - this can have disastrous consequences on large code bases, causing tight coupling between view logic and business logic. This issue is much easier to minimise in a single-developer project as the decisions of separation are more consistent, provided the developer is disciplined in following a decoupled structure.</p>
 	<p>MVVM helps with this separation by completely separating the view logic and the business logic. The View module of MVVM (Which includes the ViewController) simply displays data from the ViewModel. An excellent rule I use when developing in an MVVM architecture is to always design the ViewModel as if I was going to build a MacOS app, identical to the iOS app, and use the ViewModel to power the AppKit based ViewController.</p>
 	<p>Since MVVM is popular in apps that use RxSwift (partly due to the data flow from the ViewModel to it's owner ViewController being trivialised), I decided to opt for MVVM as any company I make work for in the future would likely use RxSwift and therefore likely use the MVVM architecture.</p>
-	<p>To exemplify how the ViewModel and ViewController exchange data, I have created two code snippets of a simple ViewModel/ViewController pairing from my app. The UI elements have been removed from these classes since that is not the focus of the snippet. I've also updated it to use UILabels/UIButtons rather than a using a UITableView to reduce complexity.</p>
+	<p>To exemplify how the ViewModel and ViewController exchange data, I have created two code snippets of a simple ViewModel/ViewController pairing from my app. The creation/constraining of UI elements has been removed from these classes since that is not the focus of the snippet. I've also updated it to use UILabels/UIButtons rather than a using a UITableView to reduce complexity.</p>
 	<script src="https://gist.github.com/Ben-Henshall/c21df26dfd4c492a520360b2a18541b0.js"></script>
 	<p>A couple of things to point out:</p>
 	<ul>
-		<li>The business logic of what information to display, how it should be formatted and how to update the state is exclusively contained within the ViewModel. This means that testing this logic is faster (i don't have to load any UI elements/storyboards to test the logic) and the testing can also be separated into a framework, which could then be shared across multiple targets (a MacOS app, for example).</li>
+		<li>The business logic of what information to display, how it should be formatted and how to update the state is exclusively contained within the ViewModel. This means that testing this logic is faster (I don't have to load any UI elements/storyboards to test the logic) and the testing can also be separated into a framework, which could then be shared across multiple targets (a MacOS app, for example).</li>
 		<li>State updates in the ViewModel are automatically detected and updated in the ViewController - this is the binding aspect of the data flow from the ViewModel to the ViewController.</li>
 		<li>Transitions between ViewControllers is handled entirely within the ViewModel by use of the SceneCoordinator. This makes testing VC transitions and verifying the resulting ViewModel much easier. The SceneCoordinator is covered in more detail in the <a href="#design-patterns">design patterns</a> section.</li>
 		<li><code>closeAction</code> is an example of the Action library. Once the <code>closeButton</code> has been tapped, the <code>closeButton</code> won't be usable until <code>sceneCoordinator.pop().asObservable().map { _ in }</code> emits an event.</li>
@@ -164,31 +165,28 @@
 		<li><b>IAPHandler</b>: encapsulates relevant StoreKit functionality, including unlocking the additional currencies, restoring previous purchases, the price of the additional unlock as well as requesting an app store review.</li>
 	</ul>
 	<p>Each of these dependencies is simply a protocol, with concrete implementations being passed between the classes. This means that if I were to switch database services, I would only need to update where the instance is first created and passed - rather than (if it was a singleton) changing many references to the singleton instance throughout the app.</p>
-	<p>It also makes the app much cleaner to test. If I was using singletons, I would need to update the shared instance to return a mock class when executed within an XCTest case. Not only does this mean you're affecting production code, but it also means that you need to make the state of the mock class multiple in order to update what the mock behaviour should be.</p>
+	<p>It also makes the app much cleaner to test. If I was using singletons, I would need to update the shared instance to return a mock class when executed within an XCTest case. Not only does this mean you're affecting production code, but it also means that you need to make the state of the mock class mutable in order to update what the mock behaviour should be.</p>
 	<p>With dependency injection, I can keep the mock dependency class within the test bundle (nowhere near production code!) and pass that into the ViewModel initialiser when creating the ViewModel in unit tests - which also allows me full access to the mutable mock dependency class. Excellent!</p>
 
 	<h5>Programatic Constraints</h5>
-	<p>Having only previously used Autolayout and "UI building" in storyboards/xibs, switching to using programatic constraints was a daunting prospect. For the first few screens of the app I carried on with the familiarity and used storyboards, but soon realised that there are a large amount of companies that do their constraints completely programatically and without a storyboard due to the issues surrounding them (Source control diffs, magic strings for segues etc). Once I had realised that this was the case, I decided to switch to building the rest of my app using programatic constraints.</p>
+	<p>Having only previously used Autolayout and "UI building" in storyboards/xibs, switching to using programatic constraints was a daunting prospect. For the first few screens of the app I carried on with the familiarity of using storyboards, but soon realised that there are a large amount of companies that do their constraints completely programatically and without a storyboard due to the issues surrounding them (Source control diffs, magic strings for segues etc). Once I had realised that this was the case, I decided to switch to building the rest of my app using programatic constraints.</p>
 	<p>This task was nowhere near as daunting as I originally thought! Building the constraints can become verbose pretty quickly, but I believe people have already fixed this kind of issue in some frameworks - I'll likely take a look at those for my next project.</p>
 	<p>One thing did annoy me when I first started programatic constraints though: <code>translatesAutoresizingMaskIntoConstraints</code> is so easy to miss!</p>
 	</br>
 
 	<h2><a name="section4">Issues Faced</a></h2>
-	<p>The biggest issue, by far, was going into this project without a good knowledge of RxSwift - how it works, how to structure the app, what the operators do or even the errors that are common and how to fix them.</p>
+	<p>The biggest issue, by far, was going into this project without a strong base knowledge of RxSwift - how it works, how to structure the app, what the operators do or even the errors that are common and how to fix them.</p>
 	<p>After struggling with Rx for the first screen, I decided that trying to progress further without having a good base knowledge of both the Reactive paradigm and the actual framework itself would be counterproductive and would compound bad habits into my coding. I took a step back and picked up the <a target="_blank" href="https://store.raywenderlich.com/products/rxswift">RxSwift book by RayWenderlich.</a> I spent a week working my way through the material, performing the exercises and reading other materials around it. After that week, I moved back to the app and began work again.</p>
-	<p>The book helped <b>immensely</b> with understanding how I should structure my app. I learnt all the major operators and how to apply them, which traits and where to use them, and more. The only thing that it didn't really help me with was the plethora of uninformative RxSwift specific errors that occur when writing code. Those were a matter of just writing enough RxSwift related code to figure out. An example of these errors is "Statement is ambigious", which seems to usually be fixed by defining what type the parameters are and what type is returned by the closure.</p>
-	<p>Explain how the calculators work with expressions, explain changes required to get a large expression correct - including podspecs repo</p>
+	<p>The book helped <b>immensely</b> with understanding how I should structure my app. I learnt all the major operators and how to apply them, what the variety of traits do, and where to use them and more. The only thing that it didn't really help me with was the plethora of uninformative RxSwift specific errors that occur when writing code. Those were a matter of just writing enough RxSwift related code to figure out. An example of these errors is "Statement is ambiguous", which seems to usually be fixed by defining what type the parameters are and what type is returned by the closure.</p>
 	<p>I briefly mentioned the issue of math-related dependencies required in the <a href="#section2">technologies section.</a> I required two dependencies - one for big number datatypes in Swift and one to execute math expressions. Since both of these dependencies operate as separate entities, I required a merging of the two. Doing so required learning about how to use Cocoapods with private repositories - I forked both of the repos (i had to have a private repo of Big-Number due to some precision issues), updated the dependency to add the returning of big numbers from the expression library (and fixed the precision issues in Big-Number) and updated the podspec file in each of those repos to a private name. I then created a private podspec repo containing these podspecs, which are then included in the list of pods when using Cocoapods.</p>
 	<p>The solution, in terms of implementation, was pretty simple and didn't require a large amount of work. I was, however, surprised by the lack of information on how to do this - I thought that using private pods would be a common use case in the industry.</p>
-	<p>GDPR compliance</p>
 	<p>My app was close to ready to launch on the week of May 25th. The week that GDPR came into action, if you don't remember. I spent a large amount of time reading over the legislation and what it meant for my app. Although I wasn't specifically gathering user information or using personal details, I do use pseudonymous analytic information/crashlytics in my app to track time spent on the app and improve the app. Under GDPR, this requires the users consent.</p>
 	<p>The solution I implemented for this issue was to show the user an alert dialog upon launch and ask for consent for analytics & crashlytics. While this isn't the best user experience, it does ensure that my analytics/crashlytics is enabled straight away in the app and allows users to immediately opt out.</p>
-	<p>Minor issue, explain use of border animations for currencies when launching app</p>
 	<p>A large amount of time was spent making small UX changes to accommodate for "less computer inclined" users. Ensuring the app is usable and intuitive for all users was very important to me.</p>
 	<p>An example of one of these changes is the border animation around the country flags on the calculator screen. After giving the app to a few non-tech oriented users, I noticed that they were struggle to understand how to change between currencies (by clicking on the country/currency flag), despite the younger audiences instantly understanding that clicking the flags would allow them to switch between currencies.</p>
 	<p>I had two options:</p>
 	<ul>
-		<li>Make a user/help guide. I didn't like this option, as the app should be simple and intuitive enough to not require a step-by-step. Maybe if more complexity was added to the app, then this would be acceptable, but in it's current state it should be easy enough to use that anyone can pick it up and figure it out without too much issue. A section in the out-of-box/onboarding flow would have sufficed as a help guide.</li>
+		<li>Make a user/help guide. I didn't like this option, as the app should be simple and intuitive enough to not require a step-by-step. Maybe if more complexity was added to the app, then this would be acceptable, but in it's current state it should be easy enough to use that anyone can pick it up and figure it out without too much issue. A section in the out-of-box/on-boarding flow would have sufficed as a help guide.</li>
 		<li>Add some kind of indication that the flag is interactive. Once the user has selected it even once, then that should be enough for them to remember the next time. Either a full flag animation (fading in/out or changing alpha over a grey background) or adding a border animation. I figured the full flag animation may be a bit disruptive to the users that already know how to switch currencies, so instead opted for the border animation. The implementation for this was trivial.</li>
 	</ul>
 	<center>
@@ -202,13 +200,13 @@
 	<h2><a name="section5">Future Improvements</a></h2>
 	<p>While my app is finished for now, there is still a large amount of functionality that I would like to add in the future:</p>
 	<ul>
-		<li><b>A history graph for currency exchange rates.</b> I skipped over this in the initial version as it required using an API which was not free to use. In the future I will be adding a button on the calculator screen to view an interactive graph of rates for each currency I have data for, allowing users to specify a range of dates to view data for.</li>
+		<li><b>A history graph for currency exchange rates.</b> I skipped over this in the initial version as it required using an API that is not free to use. In the future I will be adding a button on the calculator screen to view an interactive graph of rates for each currency I have data for, allowing users to specify a range of dates to view data for.</li>
 		<li><b>Add more unconventional currencies, such as cryptocurrencies to the currency list.</b> I left this out of the first update due to time, but it wouldn't require much effort to add in. It would simply be adding another API source to my backend and integrating a "Bitcoin/Ethereum" type country object into the backend too.</li>
 		<li><b>Add a today extension for converting between currencies.</b> This was left out due to time limits on the project and would require a little bit of effort to modularise the calculator UI a bit more. The today extension would have a calculator without operations, only allowing erase, clear and 0-9 due to space restrictions.</li>
 		<li><b>Add notifications for when currency rates drop below a certain amount.</b> This could be done using Firebase cloud messaging or just by checking through enabled notifications every time the app pulls new rates (within normal working hours to avoid a notification waking users up).</li>
 		<li><b>Make the app more accessible for users.</b> This shouldn't have been an afterthought and should have been implemented as the app was built. This includes VoiceOver and checking that larger accessibility font sizes still function correctly. A large amount of the VoiceOver text should already be complete due to most of the UI elements being based on UIKit classes, but there are still a few pieces missing.</li>
 		<li><b>Refactor the Calculator ViewModel.</b> The CalculatorVM grew to be quite large due to the amount of functionality on that screen. Upon reflection, the operations aspect of the calculator should have been moved to a service (CalculatorBrainService) class, only exposing the total value and operations string to the ViewModel for display purposes. The CalculatorVM should only be converting the total value to each of the currencies.</li>
-		<li><b>Refactor UserDefaults into a service class and pass it as a dependency.</b> The app stores some pieces of data in UserDefaults for persistence between sessions (Previous total, previously selected currencies, favourited currencies etc). The app accesses UserDefaults using an extension to the UserDefaults class, meaning data is accessed through functions and computed properties. What this means is that you cannot access values as an observable as differnet parts of the app would retrieve different instances of observables if accessed through computed properties or functions. This makes accessing/inserting data into UserDefaults very rx-unfriendly.
+		<li><b>Refactor UserDefaults into a service class and pass it as a dependency.</b> The app stores some pieces of data in UserDefaults for persistence between sessions (Previous total, previously selected currencies, favourited currencies etc). The app accesses UserDefaults using an extension to the UserDefaults class, meaning data is accessed through functions and computed properties. What this means is that you cannot access values as an observable as different parts of the app would retrieve different instances of observables if accessed through computed properties or functions. This makes accessing/inserting data into UserDefaults very Rx-unfriendly.
 		</br>
 		The solution I would implement would be to encapsulate a UserDefaults instance in another class, which exposes observables that write to UserDefaults when changed. This would allow other parts of the app to listen for events, rather than accessing the data in an imperative manner.</li>
 	</ul>
@@ -216,7 +214,7 @@
 
 	<h2><a name="section6">Other Stuff</a></h2>
 	<h5>Codable</h5>
-	<p>This project was the first chance to experience the Codable changes from Swift 4.0 first hand. I had seen many, many blog posts discussing the new changes but hadn't used them yet. The simplicity of converting a JSON structure into models is fantastic. Being able to easily override a property to convert it into another is awesome. For example, in my JSON I have a property of subregion. In my Codable model, I take the subregion and convert it into a new property of Continent with only an additional line of code in my model.</p>
+	<p>This project was the first chance to experience the Codable changes from Swift 4.0 first hand. I had seen many, many blog posts discussing the new changes but hadn't used them yet. The simplicity of converting a JSON structure into models is fantastic. Being able to easily override a property to convert it into another is awesome. For example, in my JSON I have a property of subregion. In my Codable model class, I take the subregion and convert it into a new property of Continent with only an additional line of code in my model.</p>
 	<h5>Xcode 10 editor changes</h5>
 	<p>One of my biggest gripes of being an iOS developer is having to use Xcode. While AppCode is technically an option, I find it's support for Swift not as good as when used with Obj-C. The Xcode team are making changes, but these seem to fall flat a lot of the time. Large refactoring functionality was introduced in Xcode 9, but never seems to be available and crashes Xcode often. During writing unit tests, I decided to try out the editing changes for Xcode 10 - the multi-line editing is GREAT! (but has also available in most other IDEs for a while now)</p>
 	<center>
@@ -228,12 +226,11 @@
 	</br>
 
 	<h2><a name="section7">Special Thanks</a></h2>
-	<p>RxSwift Book / RayWenderlich</p>
-	<p>BaseTrip</p>
-	<p>RxSwift community</p>
+	<p><a target="_blank" href="https://www.thebasetrip.com/">The BaseTrip</a> for allowing me to use their information on tipping data pro-bono.</p>
+	<p><a target="_blank" href="https://www.raywenderlich.com/">RayWenderlich</a> for their <a target="_blank" href="https://store.raywenderlich.com/products/rxswift"> extremely helpful RxSwift book</a> and other general iOS tutorials.</p>
+	<p>The RxSwift community - most notably the <a target="_blank" href="https://rxswift-slack.herokuapp.com/">Slack channel</a></p>
+	<p><a target="_blank" href="https://restcountries.eu/">REST Countries</a> for maintaining country information for free.</p>
 	</br>
-
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 </div>
 </section>
 </body>
